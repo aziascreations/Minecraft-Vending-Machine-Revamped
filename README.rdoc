@@ -9,7 +9,14 @@ This Readme will give you some usefull informations about the mod.
 
 == Changelog
 
+0.20 - Alpha Release:
+  *Vending Machines now uses coins
+  *Improved the "Version Checker"
+  *Fixed the update message link
+  *Minors edits, see commit changelog
+
 0.1 - First Alpha Release:
+  *Initial Release
 
 
 == Credits
@@ -21,4 +28,4 @@ See credits.txt
 
 You are allowed to include it in a modpack/launcher/..., but not getting paid for it.
 You are not allowed to claim it as your creation.
-You can use it in your own mods and modify at your will, just give credit.
+You can use it in your own mods and modify it at your will, just give credit.

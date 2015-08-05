@@ -18,14 +18,14 @@ import net.minecraft.world.World;
 
 /**
  * @author Azias
- * @version 2.0 Indev
- * @ForgeVersion 1.8 - 11.14.3.1493
+ * @version 0.2
+ * @ForgeVersion 1.7 - 10.13.4.1448
  */
 public class VendingMachineEvents {
 	@SubscribeEvent
 	public void checkUpdate(PlayerEvent.PlayerLoggedInEvent event) {
 		if(VendingMachineConfigs.checkUpdate) {
-			if(!VendingMachineMod.VERSION.equals(VendingMachineMod.VERSIONOFFICIAL)) {
+			if(!(Float.valueOf(VendingMachineMod.VERSION)>=Float.valueOf(VendingMachineMod.VERSIONOFFICIAL))) {
 				EntityPlayer player = event.player;
 				player.addChatComponentMessage(new ChatComponentTranslation("vendingmachine.update"));
 				IChatComponent component = IChatComponent.Serializer.func_150699_a(StatCollector.translateToLocal("vendingmachine.update.download"));
@@ -48,8 +48,9 @@ public class VendingMachineEvents {
 					e.printStackTrace();
 				}
 			in.close();
-			if(!VendingMachineMod.VERSION.equals(VendingMachineMod.VERSIONOFFICIAL)) {
-				System.out.println("New version for Vending Machine Revamped is available!");
+			
+			if(!(Float.valueOf(VendingMachineMod.VERSION)>=Float.valueOf(VendingMachineMod.VERSIONOFFICIAL))) {
+				System.out.println("A new version for \"Vending Machine Revamped\" is available on curse.com !");
 			}
 		} catch (IOException e1) {
 			e1.printStackTrace();

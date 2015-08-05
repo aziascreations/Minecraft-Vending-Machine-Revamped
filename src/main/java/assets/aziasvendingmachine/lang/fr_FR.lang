@@ -44,4 +44,4 @@ item.aziasvendingmachine_coin_2.name=Piece en Or
 itemGroup.VendingMachines=Distributeurs
 
 vendingmachine.update=Une mise a jour pour "Vending Machine Revamped" est disponible.
-vendingmachine.update.download=["Vous pouvez la telecharger sur: ",{"text":"www.curse.com","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"www.curse.com","color":"white"}},"clickEvent":{"action":"open_url","value":"https://github.com/AziasYur/Minecraft-News-Gui"}},""]
+vendingmachine.update.download=["Vous pouvez la telecharger sur: ",{"text":"www.curse.com","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"www.curse.com","color":"white"}},"clickEvent":{"action":"open_url","value":"http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped"}},""]

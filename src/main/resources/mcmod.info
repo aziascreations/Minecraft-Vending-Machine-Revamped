@@ -5,11 +5,11 @@
   "description": "Adds vending machines, soda, coffee and more to your game.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
+  "url": "http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped",
+  "updateUrl": "http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped",
   "authorList": ["Azias"],
   "credits": "angrybeast96, MrArcane111, general3214 and LockRikard",
-  "logoFile": "/assets/aziasvendingmachine/vendingLogo.png",
+  "logoFile": "vendingLogo.png",
   "screenshots": [],
   "dependencies": []
 }

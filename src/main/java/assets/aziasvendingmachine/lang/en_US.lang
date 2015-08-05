@@ -44,4 +44,4 @@ item.aziasvendingmachine_coin_2.name=Gold Coin
 itemGroup.VendingMachines=Vending Machines
 
 vendingmachine.update=A new update for "Vending Machine Revamped" is available.
-vendingmachine.update.download=["You can download it at: ",{"text":"www.curse.com","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"www.curse.com","color":"white"}},"clickEvent":{"action":"open_url","value":"https://github.com/AziasYur/Minecraft-News-Gui"}},""]
+vendingmachine.update.download=["You can download it at: ",{"text":"www.curse.com","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"www.curse.com","color":"white"}},"clickEvent":{"action":"open_url","value":"http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped"}},""]

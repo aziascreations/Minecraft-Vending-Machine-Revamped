@@ -63,36 +63,42 @@ public class BlockVendingMachine extends Block {
             return true;
         } else {
 			boolean isCreative = player.capabilities.isCreativeMode;
-			if(player.inventory.hasItem(VendingMachineItems.coin)||isCreative) {
-	        	int i = new Random().nextInt(9);
-	        	int blockMeta = world.getBlockMetadata(par2, par3, par4);
-	        	
-	        	ItemStack a = new ItemStack(VendingMachineItems.sodaBottle, 1, i);
-	        	EntityItem b;
-	        	if(blockMeta==0||blockMeta==4) {
-	        		 b = new EntityItem(world, par2+0.5, par3+0.5, par4-0.5, a);
-	        	} else if(blockMeta==1||blockMeta==5) {
-	        		 b = new EntityItem(world, par2+0.5, par3+0.5, par4+1.5, a);
-	        	} else if(blockMeta==2||blockMeta==6) {
-	        		 b = new EntityItem(world, par2-0.5, par3+0.5, par4+0.5, a);
-	        	} else if(blockMeta==3||blockMeta==7) {
-	        		 b = new EntityItem(world, par2+1.5, par3+0.5, par4+0.5, a);
-	        	} else {
-	        		 b = new EntityItem(world, par2+0.5, par3+3.5, par4+0.5, a);
-	        	}
-	        	if(blockMeta>3) {
-	        		b.setPosition(b.posX, b.posY-1.0D, b.posZ);
-	        	}
-	        	b.motionX=0.0D;
-	        	b.motionY=0.0D;
-	        	b.motionZ=0.0D;
-				b.setVelocity(0.0D, 0.0D, 0.0D);
-				world.spawnEntityInWorld(b);
-				
-				player.inventory.consumeInventoryItem(Items.stick);
-				//System.out.println("Hi");
-	        }
-			return true;
+			if(player.inventory.getCurrentItem() != null||isCreative) {
+				if(isCreative||player.inventory.getCurrentItem().getItem().getUnlocalizedName().equals(VendingMachineItems.coin.getUnlocalizedName())) {
+					int i = new Random().nextInt(9);
+		        	int blockMeta = world.getBlockMetadata(par2, par3, par4);
+		        	
+		        	ItemStack a = new ItemStack(VendingMachineItems.sodaBottle, 1, i);
+		        	EntityItem b;
+		        	if(blockMeta==0||blockMeta==4) {
+		        		 b = new EntityItem(world, par2+0.5, par3+0.5, par4-0.5, a);
+		        	} else if(blockMeta==1||blockMeta==5) {
+		        		 b = new EntityItem(world, par2+0.5, par3+0.5, par4+1.5, a);
+		        	} else if(blockMeta==2||blockMeta==6) {
+		        		 b = new EntityItem(world, par2-0.5, par3+0.5, par4+0.5, a);
+		        	} else if(blockMeta==3||blockMeta==7) {
+		        		 b = new EntityItem(world, par2+1.5, par3+0.5, par4+0.5, a);
+		        	} else {
+		        		 b = new EntityItem(world, par2+0.5, par3+3.5, par4+0.5, a);
+		        	}
+		        	if(blockMeta>3) {
+		        		b.setPosition(b.posX, b.posY-1.0D, b.posZ);
+		        	}
+		        	b.motionX=0.0D;
+		        	b.motionY=0.0D;
+		        	b.motionZ=0.0D;
+					b.setVelocity(0.0D, 0.0D, 0.0D);
+					world.spawnEntityInWorld(b);
+					
+					if(!isCreative) {
+						player.inventory.getCurrentItem().stackSize--;
+					}
+					return true;
+		        }
+			} else {
+				return false;
+			}
+			return false;
         }
     }
 
