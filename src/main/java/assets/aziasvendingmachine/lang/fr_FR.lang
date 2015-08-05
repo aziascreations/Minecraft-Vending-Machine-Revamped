@@ -1,0 +1,47 @@
+tile.vendingMachine.name=Distributeur de Soda
+tile.vendingMachineStand.name=Pied de Distributeur
+tile.vendingMachineSmall.name=Distributeur de Bonbons
+
+item.aziasvendingmachine_vendingMachine_0.name=Distributeur de Soda
+item.aziasvendingmachine_vendingMachine_1.name=Distributeur de Bonbons
+item.aziasvendingmachine_sodaBottle_0.name=Eau
+item.aziasvendingmachine_sodaBottle_1.name=Cola
+item.aziasvendingmachine_sodaBottle_2.name=Cola Allege
+item.aziasvendingmachine_sodaBottle_3.name=Cola sans cafeine
+item.aziasvendingmachine_sodaBottle_4.name=Cola Zero
+item.aziasvendingmachine_sodaBottle_5.name=Cola Vanille
+item.aziasvendingmachine_sodaBottle_6.name=Cola Cerise
+item.aziasvendingmachine_sodaBottle_7.name=Jus D'orange
+item.aziasvendingmachine_sodaBottle_8.name=Mountain Dew
+
+item.aziasvendingmachine_coffeeCup_0.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_1.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_2.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_3.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_4.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_5.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_6.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_7.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_8.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_9.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_10.name=Gobelet de cafe
+item.aziasvendingmachine_coffeeCup_11.name=Gobelet de cafe
+
+item.aziasvendingmachine_candy_0.name=Chewing-Gum Mauve
+item.aziasvendingmachine_candy_1.name=Chewing-Gum Bleu
+item.aziasvendingmachine_candy_2.name=Chewing-Gum Vert
+item.aziasvendingmachine_candy_3.name=Chewing-Gum Orange
+item.aziasvendingmachine_candy_4.name=Chewing-Gum Rose
+item.aziasvendingmachine_candy_5.name=Chewing-Gum Jaune
+item.aziasvendingmachine_candy_6.name=Chewing-Gum Rouge
+item.aziasvendingmachine_candy_7.name=Bonhomme en Pain D'epice
+item.aziasvendingmachine_candy_8.name=Barre de Chocolat
+
+item.aziasvendingmachine_coin_0.name=Piece en Argile
+item.aziasvendingmachine_coin_1.name=Piece en Fer
+item.aziasvendingmachine_coin_2.name=Piece en Or
+
+itemGroup.VendingMachines=Distributeurs
+
+vendingmachine.update=Une mise a jour pour "Vending Machine Revamped" est disponible.
+vendingmachine.update.download=["Vous pouvez la telecharger sur: ",{"text":"www.curse.com","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"www.curse.com","color":"white"}},"clickEvent":{"action":"open_url","value":"https://github.com/AziasYur/Minecraft-News-Gui"}},""]

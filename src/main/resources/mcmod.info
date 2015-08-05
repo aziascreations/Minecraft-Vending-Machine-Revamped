@@ -1,0 +1,16 @@
+[
+{
+  "modid": "aziasvendingmachine",
+  "name": "Vending Machines Revamped",
+  "description": "Adds vending machines, soda, coffee and more to your game.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Azias"],
+  "credits": "angrybeast96, MrArcane111, general3214 and LockRikard",
+  "logoFile": "/assets/aziasvendingmachine/vendingLogo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

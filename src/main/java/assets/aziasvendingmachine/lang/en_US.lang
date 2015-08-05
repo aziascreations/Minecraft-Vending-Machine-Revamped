@@ -1,0 +1,47 @@
+tile.vendingMachine.name=Soda Vending Machine
+tile.vendingMachineStand.name=Vending Machine Stand
+tile.vendingMachineSmall.name=Candy Vending Machine
+
+item.aziasvendingmachine_vendingMachine_0.name=Soda Vending Machine
+item.aziasvendingmachine_vendingMachine_1.name=Candy Vending Machine
+item.aziasvendingmachine_sodaBottle_0.name=Water
+item.aziasvendingmachine_sodaBottle_1.name=Cola
+item.aziasvendingmachine_sodaBottle_2.name=Diet Cola
+item.aziasvendingmachine_sodaBottle_3.name=Caffeine Free Cola
+item.aziasvendingmachine_sodaBottle_4.name=Cola Zero
+item.aziasvendingmachine_sodaBottle_5.name=Vanilla Cola
+item.aziasvendingmachine_sodaBottle_6.name=Cherry Cola
+item.aziasvendingmachine_sodaBottle_7.name=Fanta
+item.aziasvendingmachine_sodaBottle_8.name=Mountain Dew
+
+item.aziasvendingmachine_coffeeCup_0.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_1.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_2.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_3.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_4.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_5.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_6.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_7.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_8.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_9.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_10.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_11.name=Coffee Cup
+
+item.aziasvendingmachine_candy_0.name=Purple Gum
+item.aziasvendingmachine_candy_1.name=Blue Gum
+item.aziasvendingmachine_candy_2.name=Lime Gum
+item.aziasvendingmachine_candy_3.name=Orange Gum
+item.aziasvendingmachine_candy_4.name=Pink Gum
+item.aziasvendingmachine_candy_5.name=Yellow Gum
+item.aziasvendingmachine_candy_6.name=Red Gum
+item.aziasvendingmachine_candy_7.name=Gingerbread Man
+item.aziasvendingmachine_candy_8.name=Chocolate Bar
+
+item.aziasvendingmachine_coin_0.name=Clay Coin
+item.aziasvendingmachine_coin_1.name=Iron Coin
+item.aziasvendingmachine_coin_2.name=Gold Coin
+
+itemGroup.VendingMachines=Vending Machines
+
+vendingmachine.update=A new update for "Vending Machine Revamped" is available.
+vendingmachine.update.download=["You can download it at: ",{"text":"www.curse.com","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"www.curse.com","color":"white"}},"clickEvent":{"action":"open_url","value":"https://github.com/AziasYur/Minecraft-News-Gui"}},""]

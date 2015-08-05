@@ -1,0 +1,24 @@
+  __   __           _ _             __  __         _    _               ___                                 _ 
+  \ \ / /__ _ _  __| (_)_ _  __ _  |  \/  |__ _ __| |_ (_)_ _  ___ ___ | _ \_____ ____ _ _ __  _ __  ___ __| |
+   \ V / -_) ' \/ _` | | ' \/ _` | | |\/| / _` / _| ' \| | ' \/ -_|_-< |   / -_) V / _` | '  \| '_ \/ -_) _` |
+    \_/\___|_||_\__,_|_|_||_\__, | |_|  |_\__,_\__|_||_|_|_||_\___/__/ |_|_\___|\_/\__,_|_|_|_| .__/\___\__,_|
+                            |___/                                                             |_|             
+  V0.1
+
+This Readme will give you some usefull informations about the mod.
+
+== Changelog
+
+0.1 - First Alpha Release:
+
+
+== Credits
+
+See credits.txt
+
+
+== Terms of use
+
+You are allowed to include it in a modpack/launcher/..., but not getting paid for it.
+You are not allowed to claim it as your creation.
+You can use it in your own mods and modify at your will, just give credit.
