@@ -20,24 +20,29 @@ public class VendingMachineRecipes {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 1), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 3), Items.sugar, Items.sugar});
+			new ItemStack(Items.dye, 1, 3),
+			Items.sugar,
+			Items.sugar});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 2), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 3), Items.sugar});
+			new ItemStack(Items.dye, 1, 3),
+			Items.sugar});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 3), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			Items.sugar, Blocks.dirt});
+			Items.sugar,
+			Blocks.dirt});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 4), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 3), Items.reeds});
+			new ItemStack(Items.dye, 1, 3),
+			Items.reeds});
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 5), new Object[] {
+		/*GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 5), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
 			new ItemStack(Items.dye, 1, 3),
-			Items.bone,});
+			Items.bone,});*/
 		
 		/* Candies */
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 0), new Object[]{
@@ -90,27 +95,27 @@ public class VendingMachineRecipes {
 			'B', new ItemStack(Items.dye, 1, 1)});
 		
 		/* Coins */
-		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.coin, 1, 0), new Object[]{
+		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.coin, 10, 0), new Object[]{
 			" A ",
 			"ABA",
 			" A ",
 			'A', Items.clay_ball,
 			'B', Blocks.stone_button});
-		/*GameRegistry.addRecipe(new ItemStack(VendingMachineItems.coin, 1, 1), new Object[]{
+		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.coin, 10, 1), new Object[]{
 			" A ",
 			"ABA",
 			" A ",
-			'A', Items.,
-			'B', Blocks.stone_button});*/
-		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.coin, 1, 2), new Object[]{
+			'A', Items.iron_ingot,
+			'B', Blocks.stone_button});
+		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.coin, 5, 2), new Object[]{
 			" A ",
 			"ABA",
 			" A ",
-			'A', Items.gold_nugget,
+			'A', Items.gold_ingot,
 			'B', Blocks.stone_button});
 		
 		/* Vending Machines */
-		for(int i=1; i<9; i++) {
+		for(int i=1; i<13; i++) {
 			GameRegistry.addRecipe(new ItemStack(VendingMachineItems.vendingMachine, 1, 0), new Object[] {
 				"AE","BD","AC",
 				'A', Blocks.iron_block,

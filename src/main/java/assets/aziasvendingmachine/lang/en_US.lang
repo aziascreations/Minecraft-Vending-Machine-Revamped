@@ -1,6 +1,6 @@
-tile.vendingMachine.name=Soda Vending Machine
+tile.vendingMachine.name=Vending Machine
 tile.vendingMachineStand.name=Vending Machine Stand
-tile.vendingMachineSmall.name=Candy Vending Machine
+tile.vendingMachineSmall.name=Small Vending Machine
 
 item.aziasvendingmachine_vendingMachine_0.name=Soda Vending Machine
 item.aziasvendingmachine_vendingMachine_1.name=Candy Vending Machine
@@ -13,6 +13,13 @@ item.aziasvendingmachine_sodaBottle_5.name=Vanilla Cola
 item.aziasvendingmachine_sodaBottle_6.name=Cherry Cola
 item.aziasvendingmachine_sodaBottle_7.name=Fanta
 item.aziasvendingmachine_sodaBottle_8.name=Mountain Dew
+item.aziasvendingmachine_sodaBottle_9.name=Sprite
+item.aziasvendingmachine_sodaBottle_10.name=Sprite Zero
+item.aziasvendingmachine_sodaBottle_11.name=Powerade
+item.aziasvendingmachine_sodaBottle_12.name=Fruit Juice
+item.aziasvendingmachine_sodaBottle_13.name=Error
+item.aziasvendingmachine_sodaBottle_14.name=Error
+item.aziasvendingmachine_sodaBottle_15.name=Error
 
 item.aziasvendingmachine_coffeeCup_0.name=Coffee Cup
 item.aziasvendingmachine_coffeeCup_1.name=Coffee Cup
@@ -26,6 +33,10 @@ item.aziasvendingmachine_coffeeCup_8.name=Coffee Cup
 item.aziasvendingmachine_coffeeCup_9.name=Coffee Cup
 item.aziasvendingmachine_coffeeCup_10.name=Coffee Cup
 item.aziasvendingmachine_coffeeCup_11.name=Coffee Cup
+item.aziasvendingmachine_coffeeCup_12.name=Error
+item.aziasvendingmachine_coffeeCup_13.name=Error
+item.aziasvendingmachine_coffeeCup_14.name=Error
+item.aziasvendingmachine_coffeeCup_15.name=Error
 
 item.aziasvendingmachine_candy_0.name=Purple Gum
 item.aziasvendingmachine_candy_1.name=Blue Gum

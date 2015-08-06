@@ -24,7 +24,7 @@ public class ItemSodaBottle extends ItemFood {
 	
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] itemIcon;
-	private final int maxMeta = 9;
+	private final int maxMeta = 13;
 	
 	public ItemSodaBottle(String name, boolean isClient) {
         super(5, 0.25f, false);
@@ -47,13 +47,27 @@ public class ItemSodaBottle extends ItemFood {
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		if (!world.isRemote) {
 			switch(stack.getItemDamage()) {
+	    	case 5:
+	    		if(world.rand.nextInt(100) == 0) {
+	    			player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20*20, 0));
+	    		}
+				player.addPotionEffect(new PotionEffect(Potion.heal.id, 10*20, 0));
+				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 25*20, 1));
+	    		break;
 	    	case 8:
-	    		if(world.rand.nextFloat() < 0.125F) {
+	    		if(world.rand.nextInt(100) == 0) {
 	    			player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20*20, 0));
 	    		}
 				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 30*20, 1));
 				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 30*20, 0));
 				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 30*20, 0));
+	    		break;
+	    	case 11:
+	    		if(world.rand.nextInt(100) == 0) {
+	    			player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20*20, 0));
+	    		}
+				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 20*20, 0));
+				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 30*20, 1));
 	    		break;
 	    	default:
 	    		if(stack.getItemDamage()!=0) {
@@ -87,6 +101,8 @@ public class ItemSodaBottle extends ItemFood {
     	switch(stack.getItemDamage()) {
     	case 8:
             return EnumRarity.epic;
+    	case 11:
+            return EnumRarity.rare;
     	default:
             return EnumRarity.common;
     	}
