@@ -1,12 +1,6 @@
 package com.azias.vendingmachine;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraftforge.common.MinecraftForge;
-
 import java.util.Arrays;
-
-import com.azias.vendingmachine.blocks.VendingMachineBlocks;
-import com.azias.vendingmachine.items.VendingMachineItems;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -14,13 +8,18 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.ModMetadata;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.MinecraftForge;
+
+import com.azias.vendingmachine.blocks.VendingMachineBlocks;
+import com.azias.vendingmachine.items.VendingMachineItems;
 
 @Mod(modid = VendingMachineMod.MODID, version = VendingMachineMod.VERSION, name = VendingMachineMod.MODNAME)
 public class VendingMachineMod {
 	private static VendingMachineEvents modEvents = new VendingMachineEvents();
     public static final String MODID = "aziasvendingmachine";
     public static final String MODNAME = "Vending Machines Revamped";
-    public static final String VERSION = "0.30";
+    public static final String VERSION = "1.0.0";
 	public static String VERSIONOFFICIAL;
     public static CreativeTabs tabVendingMachines = new VendingMachineCreativeTab("VendingMachines");
     

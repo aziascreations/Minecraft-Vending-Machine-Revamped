@@ -24,11 +24,11 @@ public class ItemVendingMachine extends Item {
 
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] itemIcon;
-	private final int maxMeta = 2;
+	private final int maxMeta = 3;
 	private Block blockVendingSoda = VendingMachineBlocks.vendingMachineLarge;
 	private Block blockVendingCandy = VendingMachineBlocks.vendingMachineSmall;
 	private Block blockVendingStand = VendingMachineBlocks.vendingMachineStand;
-	private final String[] itemsNames = {"vendingMachine", "candyMachine"};
+	private final String[] itemsNames = {"vendingMachine", "candyMachine", "candyMachineBase"};
     
     public ItemVendingMachine(String name, boolean isClient) {
         super();
@@ -151,7 +151,7 @@ public class ItemVendingMachine extends Item {
 	            return true;
 	        }
 		case 1:
-			/*Candy Vending Machine*/
+			/*Candy Vending Machine with Stand*/
 			Block block2 = world.getBlock(x, y, z);
 			boolean isTopFree2 = world.getBlock(x, y+1, z).isAir(world, x, y+1, z);
 			
@@ -218,6 +218,67 @@ public class ItemVendingMachine extends Item {
 		                    world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.blockVendingCandy.stepSound.func_150496_b(), (this.blockVendingCandy.stepSound.getVolume() + 1.0F) / 2.0F, this.blockVendingCandy.stepSound.getPitch() * 0.8F);
 		                    --stack.stackSize;
 	                	}
+	                }
+	            }
+	            return true;
+	        }
+		case 2:
+			/*Candy Vending Machine without Stand*/
+			Block block3 = world.getBlock(x, y, z);
+			
+	        if (block3 == Blocks.snow_layer && (world.getBlockMetadata(x, y, z) & 7) < 1) {
+	            p_77648_7_ = 1;
+	        }
+	        else if (block3 != Blocks.vine && block3 != Blocks.tallgrass && block3 != Blocks.deadbush) {
+	            if (p_77648_7_ == 0) {
+	                --y;
+	            }
+	            if (p_77648_7_ == 1) {
+	                ++y;
+	            }
+	            if (p_77648_7_ == 2) {
+	                --z;
+	            }
+	            if (p_77648_7_ == 3) {
+	                ++z;
+	            }
+	            if (p_77648_7_ == 4) {
+	                --x;
+	            }
+	            if (p_77648_7_ == 5) {
+	                ++x;
+	            }
+	        }
+	        if (!player.canPlayerEdit(x, y, z, p_77648_7_, stack)) {
+	            return false;
+	        }
+	        else if (stack.stackSize == 0) {
+	            return false;
+	        }
+	        else {
+	            if (world.canPlaceEntityOnSide(this.blockVendingCandy, x, y, z, false, p_77648_7_, (Entity)null, stack)) {
+	                int i1 = this.blockVendingCandy.onBlockPlaced(world, x, y, z, p_77648_7_, p_77648_8_, p_77648_9_, p_77648_10_, 0);
+	                if (world.setBlock(x, y, z, this.blockVendingCandy, i1, 3)) {
+	                	if (world.getBlock(x, y, z) == this.blockVendingCandy) {
+		                    this.blockVendingCandy.onBlockPlacedBy(world, x, y, z, player, stack);
+		                    this.blockVendingCandy.onPostBlockPlaced(world, x, y, z, i1);
+		                    
+		                    int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+		                    if (l == 0) {
+		                    	world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+		                    }
+		                    if (l == 1) {
+		                    	world.setBlockMetadataWithNotify(x, y, z, 3, 2);
+		                    }
+		                    if (l == 2) {
+		                    	world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+		                    }
+		                    if (l == 3) {
+		                    	world.setBlockMetadataWithNotify(x, y, z, 2, 2);
+		                    }
+		                }
+		                world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.blockVendingCandy.stepSound.func_150496_b(), (this.blockVendingCandy.stepSound.getVolume() + 1.0F) / 2.0F, this.blockVendingCandy.stepSound.getPitch() * 0.8F);
+		                --stack.stackSize;
 	                }
 	            }
 	            return true;

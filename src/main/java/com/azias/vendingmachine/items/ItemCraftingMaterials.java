@@ -19,7 +19,7 @@ public class ItemCraftingMaterials extends Item {
 	
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] itemIcon;
-	private final String[] itemsNames = {"coin_clay","coin_iron","coin_gold","glassBottleEmpty"};
+	private final String[] itemsNames = {"emptyGlassBottle"};
 	private final int maxMeta = itemsNames.length;
 	
 	public ItemCraftingMaterials(String name, boolean isClient) {

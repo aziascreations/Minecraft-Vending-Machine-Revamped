@@ -1,5 +1,6 @@
 package com.azias.vendingmachine;
 
+import com.azias.vendingmachine.blocks.VendingMachineBlocks;
 import com.azias.vendingmachine.items.VendingMachineItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -12,9 +13,7 @@ public class VendingMachineRecipes {
 	public static void registerRecipes() {
 		/* Sodas */
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 0), new Object[]{
-		    "A",
-		    "B",
-		    "B",
+		    "A","B","B",
 		    'A', Blocks.wooden_button,
 		    'B', new ItemStack(Items.potionitem, 1, 0)});
 		
@@ -46,51 +45,37 @@ public class VendingMachineRecipes {
 		
 		/* Candies */
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 0), new Object[]{
-			" B ",
-			"BAB",
-			" B ",
+			" B ","BAB"," B ",
 			'A', Items.sugar,
 			'B', new ItemStack(Items.dye, 1, 5)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 1), new Object[]{
-			" B ",
-			"BAB",
-			" B ",
+			" B ","BAB"," B ",
 			'A', Items.sugar,
 			'B', new ItemStack(Items.dye, 1, 4)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 2), new Object[]{
-			" B ",
-			"BAB",
-			" B ",
+			" B ","BAB"," B ",
 			'A', Items.sugar,
 			'B', new ItemStack(Items.dye, 1, 10)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 3), new Object[]{
-			" B ",
-			"BAB",
-			" B ",
+			" B ","BAB"," B ",
 			'A', Items.sugar,
 			'B', new ItemStack(Items.dye, 1, 14)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 4), new Object[]{
-			" B ",
-			"BAB",
-			" B ",
+			" B ","BAB"," B ",
 			'A', Items.sugar,
 			'B', new ItemStack(Items.dye, 1, 9)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 5), new Object[]{
-			" B ",
-			"BAB",
-			" B ",
+			" B ","BAB"," B ",
 			'A', Items.sugar,
 			'B', new ItemStack(Items.dye, 1, 11)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 6), new Object[]{
-			" B ",
-			"BAB",
-			" B ",
+			" B ","BAB"," B ",
 			'A', Items.sugar,
 			'B', new ItemStack(Items.dye, 1, 1)});
 		
@@ -114,7 +99,7 @@ public class VendingMachineRecipes {
 			'A', Items.gold_ingot,
 			'B', Blocks.stone_button});
 		
-		/* Vending Machines */
+		/* Vending Machines and Parts */
 		for(int i=1; i<13; i++) {
 			GameRegistry.addRecipe(new ItemStack(VendingMachineItems.vendingMachine, 1, 0), new Object[] {
 				"AE","BD","AC",
@@ -125,8 +110,13 @@ public class VendingMachineRecipes {
 				'E', Blocks.stone_button});
 		}
 		
-		for(int i=1; i<9; i++) {
-			GameRegistry.addRecipe(new ItemStack(VendingMachineItems.vendingMachine, 1, 1), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.vendingMachine, 1, 1), new Object[] {
+			"A","B",
+			'A', new ItemStack(VendingMachineItems.vendingMachine, 1, 2),
+			'B', VendingMachineBlocks.vendingMachineStand});
+		
+		for(int i=0; i<9; i++) {
+			GameRegistry.addRecipe(new ItemStack(VendingMachineItems.vendingMachine, 1, 2), new Object[] {
 				"AC","BE","AD",
 				'A', Blocks.iron_block,
 				'B', Blocks.glass_pane,
@@ -134,5 +124,10 @@ public class VendingMachineRecipes {
 				'D', Items.iron_ingot,
 				'E', Blocks.stone_button});
 		}
+		
+		GameRegistry.addRecipe(new ItemStack(VendingMachineBlocks.vendingMachineStand, 1, 0), new Object[] {
+			" A ","ABA",
+			'A', Items.iron_ingot,
+			'B', Blocks.iron_block});
 	}
 }

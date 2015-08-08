@@ -32,6 +32,7 @@ public class BlockMachineStand extends Block {
         this.setBlockBounds(1.0F/16*5, 0.0F, 1.0F/16*5, 1.0F-1.0F/16*5, 1.0F, 1.0F-1.0F/16*5);
 		this.setHardness(1.5F);
 		this.setResistance(10.0F);
+		this.setCreativeTab(VendingMachineMod.tabVendingMachines);
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	

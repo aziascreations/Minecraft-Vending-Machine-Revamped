@@ -4,6 +4,7 @@ tile.vendingMachineSmall.name=Petit Distributeur
 
 item.aziasvendingmachine_vendingMachine_0.name=Distributeur de Soda
 item.aziasvendingmachine_vendingMachine_1.name=Distributeur de Bonbons
+item.aziasvendingmachine_vendingMachine_2.name=Distributeur de Bonbons
 item.aziasvendingmachine_sodaBottle_0.name=Eau
 item.aziasvendingmachine_sodaBottle_1.name=Cola
 item.aziasvendingmachine_sodaBottle_2.name=Cola Allege

@@ -4,6 +4,7 @@ tile.vendingMachineSmall.name=Small Vending Machine
 
 item.aziasvendingmachine_vendingMachine_0.name=Soda Vending Machine
 item.aziasvendingmachine_vendingMachine_1.name=Candy Vending Machine
+item.aziasvendingmachine_vendingMachine_2.name=Candy Vending Machine
 item.aziasvendingmachine_sodaBottle_0.name=Water
 item.aziasvendingmachine_sodaBottle_1.name=Cola
 item.aziasvendingmachine_sodaBottle_2.name=Diet Cola

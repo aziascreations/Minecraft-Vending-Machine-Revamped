@@ -18,9 +18,9 @@ public class VendingMachineConfigs {
 		Configuration config = new Configuration(preEvent.getSuggestedConfigurationFile());
 		config.load();
 		checkUpdate = config.get(Configuration.CATEGORY_GENERAL, "enableCheckUpdate", true, "Write a message in the chat if an update is available").getBoolean(true);
-		checkBetaUpdate = config.get(Configuration.CATEGORY_GENERAL, "enableBetaCheckUpdate", false, "Unused at the moment").getBoolean(false);
-		soundEnabled = config.get(Configuration.CATEGORY_GENERAL, "enableSounds", true, "Plays a sound when using a vending machine").getBoolean(true);
-		devMode = config.get(Configuration.CATEGORY_GENERAL, "enableDevMode", false, "Currently only affect the version checking").getBoolean(false);
+		checkBetaUpdate = config.get(Configuration.CATEGORY_GENERAL, "enableBetaCheckUpdate", false, "Check for dev updates instead of stable updates").getBoolean(false);
+		soundEnabled = config.get(Configuration.CATEGORY_GENERAL, "enableSounds", false, "Unused - Plays a sound when using a vending machine").getBoolean(false);
+		devMode = config.get(Configuration.CATEGORY_GENERAL, "enableDevMode", false, "Currently do nothing").getBoolean(false);
 		config.save();
 	}
 }
