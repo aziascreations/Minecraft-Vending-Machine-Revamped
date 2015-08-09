@@ -3,11 +3,14 @@
    \ V / -_) ' \/ _` | | ' \/ _` | | |\/| / _` / _| ' \| | ' \/ -_|_-<
     \_/\___|_||_\__,_|_|_||_\__, | |_|  |_\__,_\__|_||_|_|_||_\___/__/
                             |___/                                     
-  V1.0.0
+  V1.0.1
 
 This Readme will give you some usefull informations about the mod.
 
 == Changelog
+
+1.0.1 - Recipe Update
+  *Added new recipes 
 
 1.0.0 - First Stable Release
   *Candy Vending Machine:
