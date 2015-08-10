@@ -47,6 +47,10 @@ This Readme will give you some usefull informations about the mod.
 See credits.txt
 
 
+== Special Thanks
+
+@MrIbby
+
 == Terms of use
 
 You are allowed to include it in a modpack/launcher/..., but not getting paid for the act of only including it. If you make a modified version, you can get paid for it.

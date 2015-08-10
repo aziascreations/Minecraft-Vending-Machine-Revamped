@@ -28,7 +28,7 @@ public class BlockMachineStand extends Block {
 	
 	protected BlockMachineStand(String name) {
 		super(Material.iron);
-		this.setBlockName(VendingMachineMod.MODID + "_" + name);
+		this.setBlockName(VendingMachineMod.modID + "_" + name);
         this.setBlockBounds(1.0F/16*5, 0.0F, 1.0F/16*5, 1.0F-1.0F/16*5, 1.0F, 1.0F-1.0F/16*5);
 		this.setHardness(1.5F);
 		this.setResistance(10.0F);
@@ -39,7 +39,7 @@ public class BlockMachineStand extends Block {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerBlockIcons(IIconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon(VendingMachineMod.MODID + ":" + this.getUnlocalizedName().substring(5));
+		blockIcon = iconRegister.registerIcon(VendingMachineMod.modID + ":" + this.getUnlocalizedName().substring(5));
 	}
 	
 	@SideOnly(Side.CLIENT)
