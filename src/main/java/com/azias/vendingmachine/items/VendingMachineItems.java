@@ -2,7 +2,6 @@ package com.azias.vendingmachine.items;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
 
 public class VendingMachineItems {
 	

@@ -143,22 +143,18 @@ public class BlockVendingMachine extends Block {
 								b = new EntityItem(world, par2+0.5, par3+0.5, par4-0.5, itemFood);
 								b.motionX=0.0D;
 								b.motionZ=-0.125D;
-					        	b.setVelocity(0.0D, 0.0D, b.motionZ);
 				        	} else if(blockMeta==1||blockMeta==5) {
 				        		b = new EntityItem(world, par2+0.5, par3+0.5, par4+1.5, itemFood);
 						        b.motionX=0.0D;
 						        b.motionZ=0.125D;
-								b.setVelocity(0.0D, 0.0D, b.motionZ);
 				        	} else if(blockMeta==2||blockMeta==6) {
 				        		b = new EntityItem(world, par2-0.5, par3+0.5, par4+0.5, itemFood);
 						        b.motionX=-0.125D;
 						        b.motionZ=0.0D;
-								b.setVelocity(b.motionX, 0.0D, 0.0D);
 				        	} else if(blockMeta==3||blockMeta==7) {
 				        		b = new EntityItem(world, par2+1.5, par3+0.5, par4+0.5, itemFood);
 						        b.motionX=0.125D;
 						        b.motionZ=0.0D;
-								b.setVelocity(b.motionX, 0.0D, 0.0D);
 				        	} else {
 				        		b = new EntityItem(world, par2+0.5, par3+3.5, par4+0.5, itemFood);
 				        	}
@@ -188,7 +184,6 @@ public class BlockVendingMachine extends Block {
 				        	b.motionX=0.0D;
 				        	b.motionY=0.0D;
 				        	b.motionZ=0.0D;
-							b.setVelocity(0.0D, 0.0D, 0.0D);
 							world.spawnEntityInWorld(b);
 						}
 						
