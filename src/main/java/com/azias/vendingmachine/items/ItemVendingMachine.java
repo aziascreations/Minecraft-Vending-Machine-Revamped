@@ -33,8 +33,8 @@ public class ItemVendingMachine extends Item {
     public ItemVendingMachine(String name, boolean isClient) {
         super();
         setHasSubtypes(true);
-		setTextureName(VendingMachineMod.MODID + ":" + name);
-		setUnlocalizedName(VendingMachineMod.MODID + "_" + name);
+		setTextureName(VendingMachineMod.modID + ":" + name);
+		setUnlocalizedName(VendingMachineMod.modID + "_" + name);
 		setCreativeTab(VendingMachineMod.tabVendingMachines);
 		if(isClient) {
 			itemIcon = new IIcon[maxMeta];
@@ -46,7 +46,7 @@ public class ItemVendingMachine extends Item {
 	@Override
 	public void registerIcons(IIconRegister reg) {
 	    for (int i = 0; i < maxMeta; i ++) {
-	        this.itemIcon[i] = reg.registerIcon(VendingMachineMod.MODID + ":" + this.itemsNames[i]);
+	        this.itemIcon[i] = reg.registerIcon(VendingMachineMod.modID + ":" + this.itemsNames[i]);
 	    }
 	}
 

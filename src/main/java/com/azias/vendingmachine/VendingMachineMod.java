@@ -14,13 +14,12 @@ import net.minecraftforge.common.MinecraftForge;
 import com.azias.vendingmachine.blocks.VendingMachineBlocks;
 import com.azias.vendingmachine.items.VendingMachineItems;
 
-@Mod(modid = VendingMachineMod.MODID, version = VendingMachineMod.VERSION, name = VendingMachineMod.MODNAME)
+@Mod(modid = VendingMachineMod.modID, version = VendingMachineMod.modName, name = VendingMachineMod.version)
 public class VendingMachineMod {
-	private static VendingMachineEvents modEvents = new VendingMachineEvents();
-    public static final String MODID = "aziasvendingmachine";
-    public static final String MODNAME = "Vending Machines Revamped";
-    public static final String VERSION = "1.0.1";
-	public static String VERSIONOFFICIAL;
+	private static VendingMachineVersion modEvents = new VendingMachineVersion();
+    public static final String modID = "aziasvendingmachine";
+    public static final String modName = "Vending Machines Revamped";
+    public static final String version = "1.1.1";
     public static CreativeTabs tabVendingMachines = new VendingMachineCreativeTab("VendingMachines");
     
     @EventHandler
@@ -28,17 +27,17 @@ public class VendingMachineMod {
 		FMLCommonHandler.instance().bus().register(modEvents);
 		MinecraftForge.EVENT_BUS.register(modEvents);
 		VendingMachineConfigs.loadConfigurationFile(preEvent);
-		VendingMachineEvents.getOfficialVersionNumber();
+		VendingMachineVersion.startVersionCheck();
 		
     	VendingMachineBlocks.registerBlocks(preEvent);
     	VendingMachineItems.registerItems(preEvent);
     	VendingMachineRecipes.registerRecipes();
     	
 		ModMetadata modmeta = preEvent.getModMetadata();
-		modmeta.version = VERSION;
+		modmeta.version = version;
 		modmeta.url = "http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped";
 		modmeta.updateUrl = "http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped";
-		modmeta.name = MODNAME;
+		modmeta.name = modName;
 		modmeta.authorList = Arrays.asList(new String[] { "Azias" });
 		modmeta.description = "Adds vending machines, soda, coffee and more to your game.";
 		modmeta.credits = "angrybeast96, MrArcane111, general3214, LockRikard";

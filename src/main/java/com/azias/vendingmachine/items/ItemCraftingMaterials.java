@@ -25,8 +25,8 @@ public class ItemCraftingMaterials extends Item {
 	public ItemCraftingMaterials(String name, boolean isClient) {
         super();
         setHasSubtypes(true);
-		setTextureName(VendingMachineMod.MODID + ":" + name);
-		setUnlocalizedName(VendingMachineMod.MODID + "_" + name);
+		setTextureName(VendingMachineMod.modID + ":" + name);
+		setUnlocalizedName(VendingMachineMod.modID + "_" + name);
 		setCreativeTab(VendingMachineMod.tabVendingMachines);
 		if(isClient) {
 			itemIcon = new IIcon[maxMeta];
@@ -38,7 +38,7 @@ public class ItemCraftingMaterials extends Item {
 	@Override
 	public void registerIcons(IIconRegister reg) {
 	    for (int i = 0; i < maxMeta; i ++) {
-	        this.itemIcon[i] = reg.registerIcon(VendingMachineMod.MODID + ":"+this.getUnlocalizedName().substring(25) + itemsNames[i]);
+	        this.itemIcon[i] = reg.registerIcon(VendingMachineMod.modID + ":"+this.getUnlocalizedName().substring(25) + itemsNames[i]);
 	    }
 	}
 

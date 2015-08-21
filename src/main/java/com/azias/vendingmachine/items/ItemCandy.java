@@ -29,8 +29,8 @@ public class ItemCandy extends ItemFood {
 	public ItemCandy(String name, boolean isClient) {
         super(5, 0.25f, false);
         setHasSubtypes(true);
-		setTextureName(VendingMachineMod.MODID + ":" + name);
-		setUnlocalizedName(VendingMachineMod.MODID + "_" + name);
+		setTextureName(VendingMachineMod.modID + ":" + name);
+		setUnlocalizedName(VendingMachineMod.modID + "_" + name);
 		setCreativeTab(VendingMachineMod.tabVendingMachines);
 		if(isClient) {
 			itemIcon = new IIcon[maxMeta];
@@ -66,7 +66,7 @@ public class ItemCandy extends ItemFood {
 	@Override
 	public void registerIcons(IIconRegister reg) {
 	    for (int i = 0; i < maxMeta; i ++) {
-	        this.itemIcon[i] = reg.registerIcon(VendingMachineMod.MODID + ":"+this.getUnlocalizedName().substring(25) +"_"+i);
+	        this.itemIcon[i] = reg.registerIcon(VendingMachineMod.modID + ":"+this.getUnlocalizedName().substring(25) +"_"+i);
 	    }
 	}
 

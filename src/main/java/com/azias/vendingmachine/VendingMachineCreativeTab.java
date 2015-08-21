@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 
 public class VendingMachineCreativeTab extends CreativeTabs {
 
+	//TODO: Add a custom background texture or not.
 	public VendingMachineCreativeTab(String tabLabel) {
 		super(tabLabel);
 	}

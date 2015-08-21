@@ -33,7 +33,7 @@ public class BlockVendingMachine extends Block {
 	
 	protected BlockVendingMachine(String name, boolean isClient) {
 		super(Material.iron);
-		this.setBlockName(VendingMachineMod.MODID + "_" + name);
+		this.setBlockName(VendingMachineMod.modID + "_" + name);
 		this.setHardness(1.5F);
 		this.setResistance(10.0F);
 		if(isClient) {
@@ -220,7 +220,7 @@ public class BlockVendingMachine extends Block {
 	@Override
 	public void registerBlockIcons(IIconRegister iconRegister) {
 		for(int i=0; i<blockIcon.length; i++) {
-			blockIcon[i] = iconRegister.registerIcon(VendingMachineMod.MODID + ":" + this.getUnlocalizedName().substring(5)+"_"+i);
+			blockIcon[i] = iconRegister.registerIcon(VendingMachineMod.modID + ":" + this.getUnlocalizedName().substring(5)+"_"+i);
 		}
 	}
 	
