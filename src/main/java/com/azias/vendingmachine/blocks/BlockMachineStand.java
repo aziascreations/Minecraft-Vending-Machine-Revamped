@@ -29,7 +29,6 @@ public class BlockMachineStand extends Block {
 	protected BlockMachineStand(String name) {
 		super(Material.iron);
 		this.setBlockName(VendingMachineMod.modID + "_" + name);
-        this.setBlockBounds(1.0F/16*5, 0.0F, 1.0F/16*5, 1.0F-1.0F/16*5, 1.0F, 1.0F-1.0F/16*5);
 		this.setHardness(1.5F);
 		this.setResistance(10.0F);
 		this.setCreativeTab(VendingMachineMod.tabVendingMachines);
@@ -48,36 +47,19 @@ public class BlockMachineStand extends Block {
 		return blockIcon;
 	}
     
-    public boolean isOpaqueCube()
-    {
-        return false;
-    }
-    
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
-    {
-        return null;
-    }
-
-	@SideOnly(Side.CLIENT)
-	@Override
-    public boolean renderAsNormalBlock()
-    {
+    public boolean isOpaqueCube() {
         return false;
     }
 
 	@SideOnly(Side.CLIENT)
 	@Override
-    public int getRenderType()
-    {
+    public boolean renderAsNormalBlock() {
+        return false;
+    }
+
+	@SideOnly(Side.CLIENT)
+	@Override
+    public int getRenderType() {
         return 1;
-    }
-
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-        return null;
-    }
-	
-    @SideOnly(Side.CLIENT)
-    public Item getItem(World world, int x, int y, int z) {
-        return null;
     }
 }

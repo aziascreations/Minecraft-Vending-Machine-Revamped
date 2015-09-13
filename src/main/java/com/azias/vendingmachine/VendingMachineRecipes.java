@@ -2,7 +2,6 @@ package com.azias.vendingmachine;
 
 import com.azias.vendingmachine.blocks.VendingMachineBlocks;
 import com.azias.vendingmachine.items.VendingMachineItems;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

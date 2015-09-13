@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.azias.vendingmachine.VendingMachineMod;
 import com.azias.vendingmachine.blocks.VendingMachineBlocks;
+import com.azias.vendingmachine.blocks.tileentities.TileEntityCandyMachine;
+import com.azias.vendingmachine.blocks.tileentities.TileEntitySodaMachine;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -16,6 +18,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -25,9 +28,10 @@ public class ItemVendingMachine extends Item {
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] itemIcon;
 	private final int maxMeta = 3;
-	private Block blockVendingSoda = VendingMachineBlocks.vendingMachineLarge;
-	private Block blockVendingCandy = VendingMachineBlocks.vendingMachineSmall;
+	private Block blockVendingSoda = VendingMachineBlocks.sodaVendingMachine;
+	private Block blockVendingCandy = VendingMachineBlocks.candyVendingMachine;
 	private Block blockVendingStand = VendingMachineBlocks.vendingMachineStand;
+	private Block blockVendingFiller = VendingMachineBlocks.vendingMachineFiller;
 	private final String[] itemsNames = {"vendingMachine", "candyMachine", "candyMachineBase"};
     
     public ItemVendingMachine(String name, boolean isClient) {
@@ -113,34 +117,28 @@ public class ItemVendingMachine extends Item {
 	            return false;
 	        }
 	        else {
-	            if (world.canPlaceEntityOnSide(this.blockVendingSoda, x, y, z, false, p_77648_7_, (Entity)null, stack)) {
+	            if(world.canPlaceEntityOnSide(this.blockVendingSoda, x, y, z, false, p_77648_7_, (Entity)null, stack)) {
 	                int i1 = this.blockVendingSoda.onBlockPlaced(world, x, y, z, p_77648_7_, p_77648_8_, p_77648_9_, p_77648_10_, 0);
 	
-	                if (world.setBlock(x, y, z, this.blockVendingSoda, i1, 3)) {
-	                	if (world.setBlock(x, y+1, z, this.blockVendingSoda, i1, 3)) {
-		                    if (world.getBlock(x, y, z) == this.blockVendingSoda && world.getBlock(x, y+1, z) == this.blockVendingSoda) {
+	                if(world.setBlock(x, y, z, this.blockVendingSoda, i1, 3)) {
+	                	if(world.setBlock(x, y+1, z, this.blockVendingFiller, i1, 3)) {
+		                    if(world.getBlock(x, y, z) == this.blockVendingSoda && world.getBlock(x, y+1, z) == this.blockVendingFiller) {
 		                        this.blockVendingSoda.onBlockPlacedBy(world, x, y, z, player, stack);
 		                        this.blockVendingSoda.onPostBlockPlaced(world, x, y, z, i1);
-		                        this.blockVendingSoda.onBlockPlacedBy(world, x, y+1, z, player, stack);
-		                        this.blockVendingSoda.onPostBlockPlaced(world, x, y+1, z, i1);
+		                        this.blockVendingFiller.onBlockPlacedBy(world, x, y+1, z, player, stack);
+		                        this.blockVendingFiller.onPostBlockPlaced(world, x, y+1, z, i1);
 		                        
-		                        int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-		                        if (l == 0) {
-		                        	world.setBlockMetadataWithNotify(x, y, z, 0, 2);
-		                        	world.setBlockMetadataWithNotify(x, y+1, z, 0+4, 2);
-		                        }
-		                        if (l == 1) {
-		                        	world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-		                        	world.setBlockMetadataWithNotify(x, y+1, z, 3+4, 2);
-		                        }
-		                        if (l == 2) {
-		                        	world.setBlockMetadataWithNotify(x, y, z, 1, 2);
-		                        	world.setBlockMetadataWithNotify(x, y+1, z, 1+4, 2);
-		                        }
-		                        if (l == 3) {
-		                        	world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-		                        	world.setBlockMetadataWithNotify(x, y+1, z, 2+4, 2);
-		                        }
+		                        int rotation = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+		                        
+		                        TileEntity te = world.getTileEntity(x, y, z);
+		    			        if (te != null && te instanceof TileEntitySodaMachine) {
+		    			        	TileEntitySodaMachine tec = (TileEntitySodaMachine) te;
+		    			        	tec.setFacing((byte)rotation);
+		    			            world.markBlockForUpdate(x, y, z);
+		    			        } else {
+		    			        	System.out.println("Error: TileEntity don't exist !");
+		    			        }
+		                        world.setBlockMetadataWithNotify(x, y+1, z, 0, 2);
 		                        
 		                    }
 		                    world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.blockVendingSoda.stepSound.func_150496_b(), (this.blockVendingSoda.stepSound.getVolume() + 1.0F) / 2.0F, this.blockVendingSoda.stepSound.getPitch() * 0.8F);
@@ -200,20 +198,16 @@ public class ItemVendingMachine extends Item {
 		                        this.blockVendingCandy.onBlockPlacedBy(world, x, y+1, z, player, stack);
 		                        this.blockVendingCandy.onPostBlockPlaced(world, x, y+1, z, i1);
 		                        
-		                        int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-		                        if (l == 0) {
-		                        	world.setBlockMetadataWithNotify(x, y+1, z, 0, 2);
-		                        }
-		                        if (l == 1) {
-		                        	world.setBlockMetadataWithNotify(x, y+1, z, 3, 2);
-		                        }
-		                        if (l == 2) {
-		                        	world.setBlockMetadataWithNotify(x, y+1, z, 1, 2);
-		                        }
-		                        if (l == 3) {;
-		                        	world.setBlockMetadataWithNotify(x, y+1, z, 2, 2);
-		                        }
-		                        
+		                        int rotation = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+
+		                        TileEntity te = world.getTileEntity(x, y+1, z);
+		    			        if (te != null && te instanceof TileEntityCandyMachine) {
+		    			        	TileEntityCandyMachine tec = (TileEntityCandyMachine) te;
+		    			        	tec.setFacing((byte)rotation);
+		    			            world.markBlockForUpdate(x, y+1, z);
+		    			        } else {
+		    			        	System.out.println("Error: TileEntity don't exist !");
+		    			        }
 		                    }
 		                    world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.blockVendingCandy.stepSound.func_150496_b(), (this.blockVendingCandy.stepSound.getVolume() + 1.0F) / 2.0F, this.blockVendingCandy.stepSound.getPitch() * 0.8F);
 		                    --stack.stackSize;
@@ -263,19 +257,16 @@ public class ItemVendingMachine extends Item {
 		                    this.blockVendingCandy.onBlockPlacedBy(world, x, y, z, player, stack);
 		                    this.blockVendingCandy.onPostBlockPlaced(world, x, y, z, i1);
 		                    
-		                    int l = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-		                    if (l == 0) {
-		                    	world.setBlockMetadataWithNotify(x, y, z, 0, 2);
-		                    }
-		                    if (l == 1) {
-		                    	world.setBlockMetadataWithNotify(x, y, z, 3, 2);
-		                    }
-		                    if (l == 2) {
-		                    	world.setBlockMetadataWithNotify(x, y, z, 1, 2);
-		                    }
-		                    if (l == 3) {
-		                    	world.setBlockMetadataWithNotify(x, y, z, 2, 2);
-		                    }
+	                        int rotation = MathHelper.floor_double((double)(player.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+
+	                        TileEntity te = world.getTileEntity(x, y, z);
+	    			        if (te != null && te instanceof TileEntityCandyMachine) {
+	    			        	TileEntityCandyMachine tec = (TileEntityCandyMachine) te;
+	    			        	tec.setFacing((byte)rotation);
+	    			            world.markBlockForUpdate(x, y, z);
+	    			        } else {
+	    			        	System.out.println("Error: TileEntity don't exist !");
+	    			        }
 		                }
 		                world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.blockVendingCandy.stepSound.func_150496_b(), (this.blockVendingCandy.stepSound.getVolume() + 1.0F) / 2.0F, this.blockVendingCandy.stepSound.getPitch() * 0.8F);
 		                --stack.stackSize;

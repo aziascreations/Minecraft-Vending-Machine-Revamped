@@ -3,6 +3,7 @@ package com.azias.vendingmachine.items;
 import java.util.List;
 
 import com.azias.vendingmachine.VendingMachineMod;
+import com.azias.vendingmachine.gui.GuiBookGuide;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -11,23 +12,21 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class ItemCandy extends ItemFood {
+public class ItemGuideBook extends Item {
 	
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] itemIcon;
-	private final int maxMeta = 9;
+	private final String[] itemsNames = {"_base"};
+	private final int maxMeta = itemsNames.length;
 	
-	public ItemCandy(String name, boolean isClient) {
-        super(5, 0.25f, false);
+	public ItemGuideBook(String name, boolean isClient) {
+        super();
         setHasSubtypes(true);
 		setTextureName(VendingMachineMod.modID + ":" + name);
 		setUnlocalizedName(VendingMachineMod.modID + "_" + name);
@@ -37,36 +36,12 @@ public class ItemCandy extends ItemFood {
 		}
 		GameRegistry.registerItem(this, name);
 	}
-	
-	@Override
-	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-		if(stack.getItemDamage()!=0) {
-			if(world.rand.nextFloat() < 0.98F) {
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 15*20, 1));
-			} else {
-				player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20*20, 0));
-			}
-			if(world.rand.nextFloat() < 0.05F) {
-				player.addPotionEffect(new PotionEffect(Potion.jump.id, 15*20, 0));
-			}
-		}
-    }
-	
-    @SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean bool) {
-    	//list.add("Hi!");
-    }
-
-    public EnumRarity getRarity(ItemStack stack) {
-    	return EnumRarity.common;
-    }
-	
 
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void registerIcons(IIconRegister reg) {
 	    for (int i = 0; i < maxMeta; i ++) {
-	        this.itemIcon[i] = reg.registerIcon(VendingMachineMod.modID + ":"+this.getUnlocalizedName().substring(25) +"_"+i);
+	        this.itemIcon[i] = reg.registerIcon(VendingMachineMod.modID + ":"+this.getUnlocalizedName().substring(25) + itemsNames[i]);
 	    }
 	}
 
@@ -90,4 +65,16 @@ public class ItemCandy extends ItemFood {
 	public String getUnlocalizedName(ItemStack stack) {
 	    return this.getUnlocalizedName() + "_" + stack.getItemDamage();
 	}
+	
+	@Override
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {
+		if (world.isRemote) {
+        	System.out.println("Loading GUI...");
+        	player.openGui(VendingMachineMod.instance, GuiBookGuide.id, world, x, y, z);
+            return true;
+        } else {
+        	return true;
+        }
+	}
+	
 }

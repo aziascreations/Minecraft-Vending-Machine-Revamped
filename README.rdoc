@@ -3,11 +3,17 @@
    \ V / -_) ' \/ _` | | ' \/ _` | | |\/| / _` / _| ' \| | ' \/ -_|_-<
     \_/\___|_||_\__,_|_|_||_\__, | |_|  |_\__,_\__|_||_|_|_||_\___/__/
                             |___/                                     
-  V1.0.2
+  V1.1.0
 
 This Readme will give you some usefull informations about the mod.
 
 == Changelog
+
+1.0.2
+  *Added TileEntities
+  *Added 3D models
+  *Added WIP guide book
+  *And minors edits, see commit changelog
 
 1.0.2
   *Fixed a server crash

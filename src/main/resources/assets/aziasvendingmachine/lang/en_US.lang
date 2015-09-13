@@ -1,6 +1,9 @@
-tile.vendingMachine.name=Vending Machine
+tile.vendingMachine.name=ERROR
+tile.vendingMachineSmall.name=ERROR
 tile.vendingMachineStand.name=Vending Machine Stand
-tile.vendingMachineSmall.name=Small Vending Machine
+tile.vendingMachineFiller.name=Vending Machine Filler
+tile.sodaVendingMachine.name=Small Vending Machine
+tile.candyVendingMachine.name=Small Vending Machine
 
 item.aziasvendingmachine_vendingMachine_0.name=Soda Vending Machine
 item.aziasvendingmachine_vendingMachine_1.name=Candy Vending Machine
@@ -53,7 +56,12 @@ item.aziasvendingmachine_coin_0.name=Clay Coin
 item.aziasvendingmachine_coin_1.name=Iron Coin
 item.aziasvendingmachine_coin_2.name=Gold Coin
 
+item.aziasvendingmachine_guidebook_0.name=W.I.P Vending Machines Basic Guide
+item.aziasvendingmachine_guidebook_1.name=W.I.P Vending Machines Advanced Guide
+
 itemGroup.VendingMachines=Vending Machines
+
+gui.vendingmachine.guide.0.2=This book will guide you trough all the things you need to know about the vending machines.\n\nYou can also craft the second book for more informations about the owner options and more.
 
 vendingmachine.update=A new update for "Vending Machine Revamped" is available.
 vendingmachine.update.download=["You can download it at: ",{"text":"www.curse.com","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"www.curse.com","color":"white"}},"clickEvent":{"action":"open_url","value":"http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped"}},""]

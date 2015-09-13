@@ -65,7 +65,7 @@ public class VendingMachineVersion {
 	
 	public static void startVersionCheck() {
 		try {
-			URL url = new URL("https://raw.githubusercontent.com/AziasYur/Minecraft-Vending-Machine-Revamped/develop/version.json");
+			URL url = new URL("https://raw.githubusercontent.com/AziasYur/Minecraft-Vending-Machine-Revamped/master/version.json");
 			InputStream con = url.openStream();
 			String data = new String(ByteStreams.toByteArray(con));
 			con.close();

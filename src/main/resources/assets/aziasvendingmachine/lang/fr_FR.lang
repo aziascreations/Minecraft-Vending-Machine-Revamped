@@ -1,6 +1,9 @@
-tile.vendingMachine.name=Distributeur
+tile.vendingMachine.name=Erreur
+tile.vendingMachineSmall.name=Erreur
 tile.vendingMachineStand.name=Pied de Distributeur
-tile.vendingMachineSmall.name=Petit Distributeur
+tile.vendingMachineFiller.name=Ne pas utiliser
+tile.sodaVendingMachine.name=Distributeur de Soda
+tile.candyVendingMachine.name=Distributeur de Bonbons
 
 item.aziasvendingmachine_vendingMachine_0.name=Distributeur de Soda
 item.aziasvendingmachine_vendingMachine_1.name=Distributeur de Bonbons
@@ -53,7 +56,12 @@ item.aziasvendingmachine_coin_0.name=Piece en Argile
 item.aziasvendingmachine_coin_1.name=Piece en Fer
 item.aziasvendingmachine_coin_2.name=Piece en Or
 
+item.aziasvendingmachine_guidebook_0.name=W.I.P Guide basique pour distributeurs
+item.aziasvendingmachine_guidebook_1.name=W.I.P Guide avance pour distributeurs
+
 itemGroup.VendingMachines=Distributeurs
+
+gui.vendingmachine.guide.0.2=Ce livre va vous guider a travers les differentes choses que vous devez savoir sur les distributeurs .\n\nVous pouvez aussi creer le deuxieme livre pour plus d'informations.
 
 vendingmachine.update=Une mise a jour pour "Vending Machine Revamped" est disponible.
 vendingmachine.update.download=["Vous pouvez la telecharger sur: ",{"text":"www.curse.com","color":"gold","hoverEvent":{"action":"show_text","value":{"text":"www.curse.com","color":"white"}},"clickEvent":{"action":"open_url","value":"http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped"}},""]

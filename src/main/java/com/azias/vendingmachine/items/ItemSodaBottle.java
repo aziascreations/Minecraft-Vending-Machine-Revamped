@@ -71,7 +71,7 @@ public class ItemSodaBottle extends ItemFood {
 	    		break;
 	    	default:
 	    		if(stack.getItemDamage()!=0) {
-					if(world.rand.nextFloat() < 0.95F) {
+					if(world.rand.nextFloat() < 0.98F) {
 						player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 15*20, 0));
 					} else {
 						player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20*20, 0));
