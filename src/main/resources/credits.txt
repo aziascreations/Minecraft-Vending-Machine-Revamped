@@ -13,3 +13,7 @@ general3214 - Third Mod "Updater"
 LockRikard - Used parts of his textures
   -http://lockrikard.deviantart.com/
   -http://lockrikard.deviantart.com/art/DL-Misc-textures-438679467
+
+mrcrayfish - Used his useful model creator
+  -http://www.mrcrayfish.com/
+  -http://www.mrcrayfish.com/tools.php?id=mc

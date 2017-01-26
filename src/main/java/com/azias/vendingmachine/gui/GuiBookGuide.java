@@ -6,15 +6,14 @@ import org.lwjgl.opengl.GL11;
 import com.azias.vendingmachine.VendingMachineMod;
 import com.azias.vendingmachine.items.VendingMachineItems;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GuiBookGuide extends GuiScreen {
     private final int bookImageHeight = 192;
@@ -28,7 +27,7 @@ public class GuiBookGuide extends GuiScreen {
     private GuiButton buttonDone;
     private NextPageButton buttonNextPage;
     private NextPageButton buttonPreviousPage;
-    protected static final RenderItem itemRenderer = new RenderItem();
+    //protected static final RenderItem itemRenderer = new RenderItem();
     
     public GuiBookGuide() {
         bookPageTextures[0] = new ResourceLocation(VendingMachineMod.modID+":textures/gui/book_cover.png");
@@ -39,7 +38,7 @@ public class GuiBookGuide extends GuiScreen {
         stringPageText[0] = "";
         stringPageText[1] = "";
         //stringPageText[2] = "This book will guide you trough all the things you need to know about the vending machines.\n\nYou can also craft the second book for more informations about the owner options and more.";
-        stringPageText[2] = StatCollector.translateToLocal("gui.vendingmachine.guide.0.2");
+        stringPageText[2] = I18n.format("gui.vendingmachine.guide.0.2");
         stringPageText[3] = "§lSoda Section:§r\nSoda Vending Machine:\n\n\n\n\n\n\n\n§o*You can use any soda bottle except the §o\"Water Bottle\"§r";
         stringPageText[4] = "Recipes next...";
         stringPageText[5] = "This section of the book will give you usefull informations about the vending machines and their use.";

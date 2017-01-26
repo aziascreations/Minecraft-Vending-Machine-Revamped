@@ -10,50 +10,48 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 
 public class TileEntityCandyMachine extends TileEntity {
+	private String ownerName = "";
 	public byte facing;
+	public boolean isInfinite = true;
+	public boolean isCustom = false;
 
     @Override
-    public void updateEntity() {
-    	
-    }
-
-    @Override
-    public void writeToNBT(NBTTagCompound nbtTagCompound)
-    {
+    public void writeToNBT(NBTTagCompound nbtTagCompound) {
         super.writeToNBT(nbtTagCompound);
-		nbtTagCompound.setByte("facing", (byte)this.getFacing());
+        nbtTagCompound.setString("owner", this.ownerName);
+		nbtTagCompound.setByte("facing", this.facing);
+		nbtTagCompound.setBoolean("infinite", this.isInfinite);
+		nbtTagCompound.setBoolean("custom", this.isCustom);
     }
 
     @Override
-    public void readFromNBT(NBTTagCompound nbtTagCompound)
-    {
+    public void readFromNBT(NBTTagCompound nbtTagCompound) {
         super.readFromNBT(nbtTagCompound);
-		this.setFacing(nbtTagCompound.getByte("facing"));
+		this.ownerName = nbtTagCompound.getString("owner");
+		this.facing = nbtTagCompound.getByte("facing");
+		this.isInfinite = nbtTagCompound.getBoolean("infinite");
+		this.isCustom = nbtTagCompound.getBoolean("custom");
+		//Used to create correct values for new NBTTags
+		if(this.ownerName==""||this.ownerName==null||this.ownerName.length()<=0) {
+			this.ownerName = "null";
+			this.isInfinite = true;
+			this.isCustom = false;
+		}
     }
 
     @Override
-    public Packet getDescriptionPacket()
-    {
+    public Packet getDescriptionPacket() {
         NBTTagCompound compound = new NBTTagCompound();
         this.writeToNBT(compound);
-        return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 2, compound);
+		return new S35PacketUpdateTileEntity(pos, 1, compound);//1 changed from 2
     }
 
     @Override
-    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
-    {
-        this.readFromNBT(pkt.func_148857_g());
-    }
-    
-    public byte getFacing()
-    {
-        return this.facing;
-    }
-    
-	public void setFacing(byte par1) {
-        this.facing = par1;
+    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+        this.readFromNBT(pkt.getNbtCompound());
     }
 
 	public ItemStack getSurvivalCoin(int coinTier) {
@@ -106,4 +104,45 @@ public class TileEntityCandyMachine extends TileEntity {
 		int rand = new Random().nextInt(9);
 		return new ItemStack(VendingMachineItems.candy, 1, rand);
     }
+    
+    public byte getFacing() {
+        return this.facing;
+    }
+
+	public void setFacing(EnumFacing par1) {
+		switch(par1) {
+		case NORTH:
+			this.setFacing((byte)0);
+			break;
+		case EAST:
+			this.setFacing((byte)1);
+			break;
+		case SOUTH:
+			this.setFacing((byte)2);
+			break;
+		case WEST:
+			this.setFacing((byte)3);
+			break;
+		default:
+			this.setFacing((byte)0);
+			break;
+		}
+	}
+    
+	public void setFacing(byte par1) {
+        this.facing = par1;
+        System.out.println("Setting rotation at: "+par1);
+    }
+	
+	public void setOwner(String par1) {
+		this.ownerName = par1;
+	}
+	
+	public String getOwner() {
+		return this.ownerName;
+	}
+	
+	public boolean isOwner(String par1) {
+		return this.ownerName == par1;
+	}
 }

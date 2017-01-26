@@ -1,8 +1,8 @@
 package com.azias.vendingmachine;
 
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class VendingMachineConfigs {
 	public static boolean checkUpdate;

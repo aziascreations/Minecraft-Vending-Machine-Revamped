@@ -2,10 +2,10 @@ package com.azias.vendingmachine;
 
 import com.azias.vendingmachine.blocks.VendingMachineBlocks;
 import com.azias.vendingmachine.items.VendingMachineItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class VendingMachineRecipes {
 	
@@ -13,144 +13,144 @@ public class VendingMachineRecipes {
 		/* Sodas */
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 0), new Object[]{
 		    "A","B","B",
-		    'A', Blocks.wooden_button,
-		    'B', new ItemStack(Items.potionitem, 1, 0)});
+		    'A', Blocks.WOODEN_BUTTON,
+		    'B', new ItemStack(Items.POTIONITEM, 1, 0)});
 		
 		//Cola
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 1), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 3),
-			Items.sugar,
-			Items.sugar});
+			new ItemStack(Items.DYE, 1, 3),
+			Items.SUGAR,
+			Items.SUGAR});
 		
 		//Diet Cola
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 2), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 3),
-			Items.sugar});
+			new ItemStack(Items.DYE, 1, 3),
+			Items.SUGAR});
 		
 		//Caffeine Free Cola
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 3), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			Items.sugar,
-			Blocks.dirt});
+			Items.SUGAR,
+			Blocks.DIRT});
 		
 		//Cola Zero
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 4), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 3),
-			Items.reeds});
+			new ItemStack(Items.DYE, 1, 3),
+			Items.REEDS});
 		
 		//Cherry Cola
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 6), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 3),
-			Items.sugar,
-			Items.apple});
+			new ItemStack(Items.DYE, 1, 3),
+			Items.SUGAR,
+			Items.APPLE});
 		
 		//Fanta
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 7), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 14),
-			Items.sugar,
-			Items.apple});
+			new ItemStack(Items.DYE, 1, 14),
+			Items.SUGAR,
+			Items.APPLE});
 		
 		//Mountain Dew
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 8), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 10),
-			Items.sugar,
-			Items.golden_apple});
+			new ItemStack(Items.DYE, 1, 10),
+			Items.SUGAR,
+			Items.GOLDEN_APPLE});
 		
 		//Sprite
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 9), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			Items.sugar});
+			Items.SUGAR});
 		
 		//Sprite Zero
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 10), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			Items.reeds});
+			Items.REEDS});
 		
 		//Powerade
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 11), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			new ItemStack(Items.dye, 1, 4),
-			Items.sugar,
-			Items.golden_apple});
+			new ItemStack(Items.DYE, 1, 4),
+			Items.SUGAR,
+			Items.GOLDEN_APPLE});
 		
 		//Fruit Juice
 		GameRegistry.addShapelessRecipe(new ItemStack(VendingMachineItems.sodaBottle, 1, 12), new Object[] {
 			new ItemStack(VendingMachineItems.sodaBottle, 1, 0),
-			Items.apple,
-			Items.sugar,
-			Items.carrot});
+			Items.APPLE,
+			Items.SUGAR,
+			Items.CARROT});
 		
 		/* Candies */
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 0), new Object[]{
 			" B ","BAB"," B ",
-			'A', Items.sugar,
-			'B', new ItemStack(Items.dye, 1, 5)});
+			'A', Items.SUGAR,
+			'B', new ItemStack(Items.DYE, 1, 5)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 1), new Object[]{
 			" B ","BAB"," B ",
-			'A', Items.sugar,
-			'B', new ItemStack(Items.dye, 1, 4)});
+			'A', Items.SUGAR,
+			'B', new ItemStack(Items.DYE, 1, 4)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 2), new Object[]{
 			" B ","BAB"," B ",
-			'A', Items.sugar,
-			'B', new ItemStack(Items.dye, 1, 10)});
+			'A', Items.SUGAR,
+			'B', new ItemStack(Items.DYE, 1, 10)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 3), new Object[]{
 			" B ","BAB"," B ",
-			'A', Items.sugar,
-			'B', new ItemStack(Items.dye, 1, 14)});
+			'A', Items.SUGAR,
+			'B', new ItemStack(Items.DYE, 1, 14)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 4), new Object[]{
 			" B ","BAB"," B ",
-			'A', Items.sugar,
-			'B', new ItemStack(Items.dye, 1, 9)});
+			'A', Items.SUGAR,
+			'B', new ItemStack(Items.DYE, 1, 9)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 5), new Object[]{
 			" B ","BAB"," B ",
-			'A', Items.sugar,
-			'B', new ItemStack(Items.dye, 1, 11)});
+			'A', Items.SUGAR,
+			'B', new ItemStack(Items.DYE, 1, 11)});
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.candy, 1, 6), new Object[]{
 			" B ","BAB"," B ",
-			'A', Items.sugar,
-			'B', new ItemStack(Items.dye, 1, 1)});
+			'A', Items.SUGAR,
+			'B', new ItemStack(Items.DYE, 1, 1)});
 		
 		/* Coins */
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.coin, 10, 0), new Object[]{
 			" A ",
 			"ABA",
 			" A ",
-			'A', Items.clay_ball,
-			'B', Blocks.stone_button});
+			'A', Items.CLAY_BALL,
+			'B', Blocks.STONE_BUTTON});
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.coin, 10, 1), new Object[]{
 			" A ",
 			"ABA",
 			" A ",
-			'A', Items.iron_ingot,
-			'B', Blocks.stone_button});
+			'A', Items.IRON_INGOT,
+			'B', Blocks.STONE_BUTTON});
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.coin, 5, 2), new Object[]{
 			" A ",
 			"ABA",
 			" A ",
-			'A', Items.gold_ingot,
-			'B', Blocks.stone_button});
+			'A', Items.GOLD_INGOT,
+			'B', Blocks.STONE_BUTTON});
 		
 		/* Vending Machines and Parts */
 		for(int i=1; i<13; i++) {
 			GameRegistry.addRecipe(new ItemStack(VendingMachineItems.vendingMachine, 1, 0), new Object[] {
 				"AE","BD","AC",
-				'A', Blocks.iron_block,
-				'B', Blocks.glass_pane,
+				'A', Blocks.IRON_BLOCK,
+				'B', Blocks.GLASS_PANE,
 				'C', new ItemStack(VendingMachineItems.sodaBottle, 1, i),
-				'D', Items.redstone,
-				'E', Blocks.stone_button});
+				'D', Items.REDSTONE,
+				'E', Blocks.STONE_BUTTON});
 		}
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineItems.vendingMachine, 1, 1), new Object[] {
@@ -161,16 +161,16 @@ public class VendingMachineRecipes {
 		for(int i=0; i<9; i++) {
 			GameRegistry.addRecipe(new ItemStack(VendingMachineItems.vendingMachine, 1, 2), new Object[] {
 				"AC","BE","AD",
-				'A', Blocks.iron_block,
-				'B', Blocks.glass_pane,
+				'A', Blocks.IRON_BLOCK,
+				'B', Blocks.GLASS_PANE,
 				'C', new ItemStack(VendingMachineItems.candy, 1, i),
-				'D', Items.iron_ingot,
-				'E', Blocks.stone_button});
+				'D', Items.IRON_INGOT,
+				'E', Blocks.STONE_BUTTON});
 		}
 		
 		GameRegistry.addRecipe(new ItemStack(VendingMachineBlocks.vendingMachineStand, 1, 0), new Object[] {
 			" A ","ABA",
-			'A', Items.iron_ingot,
-			'B', Blocks.iron_block});
+			'A', Items.IRON_INGOT,
+			'B', Blocks.IRON_BLOCK});
 	}
 }

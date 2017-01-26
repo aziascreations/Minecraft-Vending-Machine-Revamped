@@ -1,19 +1,19 @@
 package com.azias.vendingmachine.blocks;
 
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.block.Block;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class VendingMachineBlocks {
 	public static Block sodaVendingMachine, candyVendingMachine;
-	public static Block vendingMachineStand, vendingMachineFiller;
+	public static Block vendingMachineStand;//, vendingMachineFiller;
 	
 	public static void registerBlocks(FMLPreInitializationEvent preEvent) {
 		boolean isClient = preEvent.getSide().isClient();
 		
-		sodaVendingMachine = new BlockSodaVendingMachine("sodaVendingMachine").setBlockName("sodaVendingMachine");
-		candyVendingMachine = new BlockCandyVendingMachine("candyVendingMachine").setBlockName("candyVendingMachine");
+		sodaVendingMachine = new BlockSodaVendingMachine();
+		candyVendingMachine = new BlockCandyVendingMachine();
 		
-		vendingMachineStand = new BlockMachineStand("vendingMachineStand").setBlockName("vendingMachineStand");
-		vendingMachineFiller = new BlockMachineFiller("vendingMachineFiller").setBlockName("vendingMachineFiller");
+		vendingMachineStand = new BlockMachineStand();
+		//vendingMachineFiller = new BlockMachineFiller("vendingMachineFiller").setUnlocalizedName("vendingMachineFiller");
 	}
 }

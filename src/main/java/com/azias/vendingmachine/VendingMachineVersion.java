@@ -7,15 +7,15 @@ import java.util.Map;
 import com.google.common.io.ByteStreams;
 import com.google.gson.Gson;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
-import cpw.mods.fml.common.versioning.ArtifactVersion;
-import cpw.mods.fml.common.versioning.DefaultArtifactVersion;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.StatCollector;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.common.versioning.ArtifactVersion;
+import net.minecraftforge.fml.common.versioning.DefaultArtifactVersion;
 
 public class VendingMachineVersion {
 	public static final int majorVersion = Integer.parseInt(VendingMachineMod.version.split("\\.")[0]);
@@ -56,16 +56,19 @@ public class VendingMachineVersion {
 		if(VendingMachineConfigs.checkUpdate) {
 			if(status==Status.OUTDATED) {
 				EntityPlayer player = event.player;
-				player.addChatComponentMessage(new ChatComponentTranslation("vendingmachine.update"));
-				IChatComponent component = IChatComponent.Serializer.func_150699_a(StatCollector.translateToLocal("vendingmachine.update.download"));
+				player.addChatComponentMessage(new TextComponentTranslation("vendingmachine.update"), true);
+				ITextComponent component = ITextComponent.Serializer.jsonToComponent(I18n.format("vendingmachine.update.download"));
 				player.addChatMessage(component);
+				//player.addChatComponentMessage(new ChatComponentTranslation("vendingmachine.update.notification"));
+				//IChatComponent component = IChatComponent.Serializer.func_150699_a(I18n.format("vendingmachine.update.download"));
+				//player.addChatMessage(component);
 			}
 		}
 	}
 	
 	public static void startVersionCheck() {
 		try {
-			URL url = new URL("https://raw.githubusercontent.com/AziasYur/Minecraft-Vending-Machine-Revamped/master/version.json");
+			URL url = new URL("https://raw.githubusercontent.com/aziascreations/Minecraft-Vending-Machine-Revamped/1.11.2/version.json");
 			InputStream con = url.openStream();
 			String data = new String(ByteStreams.toByteArray(con));
 			con.close();
@@ -106,18 +109,25 @@ public class VendingMachineVersion {
 	
 	private static void echoStatus() {
 		System.out.println(VendingMachineMod.modName+"'s version statut:");
-		if(status==Status.UP_TO_DATE) {
-			System.out.println("UpToDate");
-		} else if(status==Status.OUTDATED) {
-			System.out.println("Outdated");
-		} else if(status==Status.AHEAD) {
-			System.out.println("Ahead");
-		} else if(status==Status.FAILED) {
-			System.out.println("ERROR 1");
-		} else if(status==Status.PENDING) {
-			System.out.println("ERROR 2");
-		} else {
-			System.out.println("ERROR 3");
+		switch(status) {
+			case UP_TO_DATE:
+				System.out.println("UpToDate");
+				break;
+			case OUTDATED:
+				System.out.println("Outdated");
+				break;
+			case AHEAD:
+				System.out.println("Ahead");
+				break;
+			case FAILED:
+				System.out.println("Failed");
+				break;
+			case PENDING:
+				System.out.println("Pending");
+				break;
+			default:
+				System.out.println("UnknownCase");
+				break;
 		}
 	}
 }

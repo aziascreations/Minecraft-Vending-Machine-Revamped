@@ -1,24 +1,23 @@
 package com.azias.vendingmachine;
 
-import com.azias.vendingmachine.blocks.VendingMachineBlocks;
 import com.azias.vendingmachine.gui.GuiHandler;
 import com.azias.vendingmachine.items.VendingMachineItems;
-import com.azias.vendingmachine.blocks.tileentities.*;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod(modid = VendingMachineMod.modID, version = VendingMachineMod.modName, name = VendingMachineMod.version)
 public class VendingMachineMod {
     public static final String modID = "aziasvendingmachine";
     public static final String modName = "Vending Machines Revamped";
-    public static final String version = "1.1.0";
+    public static final String version = "0.0.0";
     
 	private static VendingMachineVersion modEvents = new VendingMachineVersion();
     public static CreativeTabs tabVendingMachines = new VendingMachineCreativeTab("VendingMachines");
@@ -30,19 +29,19 @@ public class VendingMachineMod {
     
     @EventHandler
     public void PreLoad(FMLPreInitializationEvent preEvent) {
-		FMLCommonHandler.instance().bus().register(modEvents);
+		//FMLCommonHandler.instance().bus().register(modEvents); // DEPRECATED
 		MinecraftForge.EVENT_BUS.register(modEvents);
 		VendingMachineConfigs.loadConfigurationFile(preEvent);
 		VendingMachineVersion.startVersionCheck();
 
-		GameRegistry.registerTileEntity(TileEntitySodaMachine.class, "tileEntityMachineSoda");
-		GameRegistry.registerTileEntity(TileEntityCandyMachine.class, "tileEntityMachineCandy");
+		//GameRegistry.registerTileEntity(TileEntitySodaMachine.class, "tileEntityMachineSoda");
+		//GameRegistry.registerTileEntity(TileEntityCandyMachine.class, "tileEntityMachineCandy");
 		
-    	VendingMachineBlocks.registerBlocks(preEvent);
+    	//VendingMachineBlocks.registerBlocks(preEvent);
     	VendingMachineItems.registerItems(preEvent);
-    	VendingMachineRecipes.registerRecipes();
+    	//VendingMachineRecipes.registerRecipes();
 
         proxy.registerRenderers();
-    	NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+    	NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());/**/
     }
 }

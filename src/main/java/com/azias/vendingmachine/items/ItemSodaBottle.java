@@ -4,12 +4,9 @@ import java.util.List;
 
 import com.azias.vendingmachine.VendingMachineMod;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -17,30 +14,30 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemSodaBottle extends ItemFood {
+	protected final static int maxMeta = 13;
 	
-	@SideOnly(Side.CLIENT)
-	protected IIcon[] itemIcon;
-	private final int maxMeta = 13;
+	protected String name = "sodaBottle";
 	
-	public ItemSodaBottle(String name, boolean isClient) {
+	public ItemSodaBottle() {
         super(5, 0.25f, false);
         setHasSubtypes(true);
-		setTextureName(VendingMachineMod.modID + ":" + name);
-		setUnlocalizedName(VendingMachineMod.modID + "_" + name);
+		setUnlocalizedName(VendingMachineMod.modID + "_" + this.name);
+        setRegistryName(new ResourceLocation(VendingMachineMod.modID, this.name));
 		setCreativeTab(VendingMachineMod.tabVendingMachines);
-		if(isClient) {
-			itemIcon = new IIcon[maxMeta];
-		}
-		GameRegistry.registerItem(this, name);
+		GameRegistry.register(this);
 	}
 	
 	@Override
     public EnumAction getItemUseAction(ItemStack stack) {
-        return EnumAction.drink;
+        return EnumAction.DRINK;
     }
 	
 	@Override
@@ -49,35 +46,35 @@ public class ItemSodaBottle extends ItemFood {
 			switch(stack.getItemDamage()) {
 	    	case 5:
 	    		if(world.rand.nextInt(100) == 0) {
-	    			player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20*20, 0));
+	    			player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 20*20, 0));
 	    		}
-				player.addPotionEffect(new PotionEffect(Potion.heal.id, 10*20, 0));
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 25*20, 1));
+				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 10*20, 0));
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 25*20, 1));
 	    		break;
 	    	case 8:
 	    		if(world.rand.nextInt(100) == 0) {
-	    			player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20*20, 0));
+	    			player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 20*20, 0));
 	    		}
-				player.addPotionEffect(new PotionEffect(Potion.resistance.id, 30*20, 1));
-				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 30*20, 0));
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 30*20, 0));
+				player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 30*20, 1));
+				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 30*20, 0));
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 30*20, 0));
 	    		break;
 	    	case 11:
 	    		if(world.rand.nextInt(100) == 0) {
-	    			player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20*20, 0));
+	    			player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 20*20, 0));
 	    		}
-				player.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 20*20, 0));
-				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 30*20, 1));
+				player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 20*20, 0));
+				player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 30*20, 1));
 	    		break;
 	    	default:
 	    		if(stack.getItemDamage()!=0) {
 					if(world.rand.nextFloat() < 0.98F) {
-						player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 15*20, 0));
+						player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 15*20, 0));
 					} else {
-						player.addPotionEffect(new PotionEffect(Potion.confusion.id, 20*20, 0));
+						player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 20*20, 0));
 					}
 					if(world.rand.nextFloat() < 0.05F) {
-						player.addPotionEffect(new PotionEffect(Potion.jump.id, 15*20, 0));
+						player.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 15*20, 0));
 					}
 	    		}
 	    		break;
@@ -100,41 +97,28 @@ public class ItemSodaBottle extends ItemFood {
     {
     	switch(stack.getItemDamage()) {
     	case 8:
-            return EnumRarity.epic;
+            return EnumRarity.EPIC;
     	case 11:
-            return EnumRarity.rare;
+            return EnumRarity.RARE;
     	default:
-            return EnumRarity.common;
+            return EnumRarity.COMMON;
     	}
     }
-	
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void registerIcons(IIconRegister reg) {
+	public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
 	    for (int i = 0; i < maxMeta; i ++) {
-	        this.itemIcon[i] = reg.registerIcon(VendingMachineMod.modID + ":"+this.getUnlocalizedName().substring(25) +"_"+i);
-	    }
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public IIcon getIconFromDamage(int meta) {
-	    if (meta > maxMeta-1)
-	        meta = 0;
-	    return this.itemIcon[meta];
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
-	    for (int i = 0; i < maxMeta; i ++) {
-	        list.add(new ItemStack(item, 1, i));
+	    	subItems.add(new ItemStack(itemIn, 1, i));
 	    }
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 	    return this.getUnlocalizedName() + "_" + stack.getItemDamage();
+	}
+	
+	public String getName() {
+		return this.name;
 	}
 }

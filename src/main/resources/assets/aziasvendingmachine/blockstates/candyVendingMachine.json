@@ -1,0 +1,8 @@
+{
+	"variants": {
+        "facing=north": { "model": "aziasvendingmachine:candyVendingMachine", "y": 180},
+        "facing=south": { "model": "aziasvendingmachine:candyVendingMachine", "y": 0 },
+        "facing=west": { "model": "aziasvendingmachine:candyVendingMachine", "y": 90 },
+        "facing=east": { "model": "aziasvendingmachine:candyVendingMachine", "y": 270 }
+	}
+}

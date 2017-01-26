@@ -1,0 +1,6 @@
+{
+	"parent": "block/vendingstand",
+	"textures": {
+		"all": "aziasvendingmachine:blocks/vendingMachineStand"
+	}
+}

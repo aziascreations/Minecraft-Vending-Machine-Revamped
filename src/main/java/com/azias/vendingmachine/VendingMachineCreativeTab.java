@@ -1,11 +1,11 @@
 package com.azias.vendingmachine;
 
 import com.azias.vendingmachine.items.VendingMachineItems;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class VendingMachineCreativeTab extends CreativeTabs {
 
@@ -16,7 +16,7 @@ public class VendingMachineCreativeTab extends CreativeTabs {
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Item getTabIconItem() {
-		return new ItemStack(VendingMachineItems.vendingMachine, 1).getItem();
+	public ItemStack getTabIconItem() {
+		return new ItemStack(VendingMachineItems.coin, 1);
 	}
 }

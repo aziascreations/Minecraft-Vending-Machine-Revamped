@@ -1,16 +1,16 @@
 [
-{
-  "modid": "aziasvendingmachine",
-  "name": "Vending Machines Revamped",
-  "description": "Adds vending machines, soda, coffee and more to your game.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped",
-  "updateUrl": "http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped",
-  "authorList": ["Azias"],
-  "credits": "angrybeast96, MrArcane111, general3214, LockRikard",
-  "logoFile": "vendingLogo.png",
-  "screenshots": [],
-  "dependencies": []
-}
+    {
+      "modid": "aziasvendingmachine",
+      "name": "Vending Machines Revamped",
+      "description": "Adds vending machines, soda, coffee and more to your game.",
+      "version": "${version}",
+      "mcversion": "${mcversion}",
+      "url": "http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped",
+      "updateUrl": "http://minecraft.curseforge.com/mc-mods/233580-vending-machines-revamped",
+      "authorList": ["Azias"],
+      "credits": "angrybeast96, MrArcane111, general3214, LockRikard, mrcrayfish",
+      "logoFile": "vendingLogo.png",
+      "screenshots": [],
+      "dependencies": []
+    }
 ]

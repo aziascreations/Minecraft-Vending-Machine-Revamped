@@ -1,0 +1,10 @@
+{
+ "vendingmachine.toy_open": {
+    "category": "master",
+    "sounds": [
+      "aziasvendingmachine/toy_open1",
+      "aziasvendingmachine/toy_open2",
+      "aziasvendingmachine/toy_open3"
+    ]
+  }
+}
