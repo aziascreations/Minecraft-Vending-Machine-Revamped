@@ -1,7 +1,7 @@
 {
-	"parent": "builtin/generated",
+	"parent": "item/generated",
 	"textures": {
-		"layer0": "aziasvendingmachine:items/sodaBottle_10"
+		"layer0": "aziasvendingmachine:items/sodabottle_10"
 	},
 	"display": {
 		"thirdperson": {

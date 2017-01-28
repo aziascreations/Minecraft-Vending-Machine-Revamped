@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
-import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 
@@ -19,12 +19,13 @@ public class TileEntityCandyMachine extends TileEntity {
 	public boolean isCustom = false;
 
     @Override
-    public void writeToNBT(NBTTagCompound nbtTagCompound) {
+    public NBTTagCompound writeToNBT(NBTTagCompound nbtTagCompound) {
         super.writeToNBT(nbtTagCompound);
         nbtTagCompound.setString("owner", this.ownerName);
 		nbtTagCompound.setByte("facing", this.facing);
 		nbtTagCompound.setBoolean("infinite", this.isInfinite);
 		nbtTagCompound.setBoolean("custom", this.isCustom);
+		return nbtTagCompound;
     }
 
     @Override
@@ -46,11 +47,11 @@ public class TileEntityCandyMachine extends TileEntity {
     public Packet getDescriptionPacket() {
         NBTTagCompound compound = new NBTTagCompound();
         this.writeToNBT(compound);
-		return new S35PacketUpdateTileEntity(pos, 1, compound);//1 changed from 2
+		return new SPacketUpdateTileEntity(pos, 1, compound);//1 changed from 2
     }
 
     @Override
-    public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
         this.readFromNBT(pkt.getNbtCompound());
     }
 

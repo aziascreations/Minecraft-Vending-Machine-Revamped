@@ -1,9 +1,9 @@
 {
     "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
     "textures": {
-        "0": "aziasvendingmachine:blocks/vendingMachineStand_Side",
-        "1": "aziasvendingmachine:blocks/vendingMachineStand_Top",
-        "particle": "aziasvendingmachine:blocks/vendingMachineStand_Top"
+        "0": "aziasvendingmachine:blocks/vendingmachinestand_side",
+        "1": "aziasvendingmachine:blocks/vendingmachinestand_top",
+        "particle": "aziasvendingmachine:blocks/vendingmachinestand_top"
     },
     "elements": [
         {

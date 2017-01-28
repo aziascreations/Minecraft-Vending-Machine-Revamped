@@ -17,6 +17,6 @@ public class VendingMachineCreativeTab extends CreativeTabs {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public ItemStack getTabIconItem() {
-		return new ItemStack(VendingMachineItems.coin, 1);
+		return new ItemStack(VendingMachineItems.vendingMachine, 1);
 	}
 }

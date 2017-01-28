@@ -1,5 +1,5 @@
 {
 	"variants": {
-		"normal": { "model": "aziasvendingmachine:vendingMachineStand" }
+		"normal": { "model": "aziasvendingmachine:vendingmachinestand" }
 	}
 }

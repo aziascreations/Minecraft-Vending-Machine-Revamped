@@ -1,5 +1,6 @@
 package com.azias.vendingmachine;
 
+import com.azias.vendingmachine.blocks.VendingMachineBlocks;
 import com.azias.vendingmachine.gui.GuiHandler;
 import com.azias.vendingmachine.items.VendingMachineItems;
 
@@ -17,7 +18,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class VendingMachineMod {
     public static final String modID = "aziasvendingmachine";
     public static final String modName = "Vending Machines Revamped";
-    public static final String version = "0.0.0";
+    public static final String version = "0.0.1";
     
 	private static VendingMachineVersion modEvents = new VendingMachineVersion();
     public static CreativeTabs tabVendingMachines = new VendingMachineCreativeTab("VendingMachines");
@@ -29,7 +30,6 @@ public class VendingMachineMod {
     
     @EventHandler
     public void PreLoad(FMLPreInitializationEvent preEvent) {
-		//FMLCommonHandler.instance().bus().register(modEvents); // DEPRECATED
 		MinecraftForge.EVENT_BUS.register(modEvents);
 		VendingMachineConfigs.loadConfigurationFile(preEvent);
 		VendingMachineVersion.startVersionCheck();
@@ -37,11 +37,11 @@ public class VendingMachineMod {
 		//GameRegistry.registerTileEntity(TileEntitySodaMachine.class, "tileEntityMachineSoda");
 		//GameRegistry.registerTileEntity(TileEntityCandyMachine.class, "tileEntityMachineCandy");
 		
-    	//VendingMachineBlocks.registerBlocks(preEvent);
+    	VendingMachineBlocks.registerBlocks(preEvent);
     	VendingMachineItems.registerItems(preEvent);
-    	//VendingMachineRecipes.registerRecipes();
+    	VendingMachineRecipes.registerRecipes();
 
         proxy.registerRenderers();
-    	NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());/**/
+    	NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     }
 }

@@ -2,6 +2,8 @@ package com.azias.vendingmachine.items;
 
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 import com.azias.vendingmachine.VendingMachineMod;
 import com.azias.vendingmachine.blocks.VendingMachineBlocks;
 import com.azias.vendingmachine.blocks.tileentities.TileEntityCandyMachine;
@@ -9,6 +11,7 @@ import com.azias.vendingmachine.blocks.tileentities.TileEntitySodaMachine;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSnow;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -17,9 +20,16 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -28,19 +38,24 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemVendingMachine extends Item {
 
-	//private Block blockVendingSoda = VendingMachineBlocks.sodaVendingMachine;
-	private Block blockVendingCandy = VendingMachineBlocks.candyVendingMachine;
-	private Block blockVendingStand = VendingMachineBlocks.vendingMachineStand;
-	//private Block blockVendingFiller = VendingMachineBlocks.vendingMachineFiller;
+	////private Block blockVendingSoda = VendingMachineBlocks.sodaVendingMachine;
+	//private Block blockVendingCandy = VendingMachineBlocks.candyVendingMachine;
+	//private Block blockVendingStand = VendingMachineBlocks.vendingMachineStand;
+	////private Block blockVendingFiller = VendingMachineBlocks.vendingMachineFiller;
+
+    public final Block block = VendingMachineBlocks.vendingMachineStand;
+	
+	protected static final int maxMeta = 3;
+	
 	protected String name = "vendingMachine";
-	protected final int maxMeta = 3;
     
     public ItemVendingMachine() {
         super();
         setHasSubtypes(true);
 		setUnlocalizedName(VendingMachineMod.modID + "_" + this.name);
+        setRegistryName(new ResourceLocation(VendingMachineMod.modID, this.name));
 		setCreativeTab(VendingMachineMod.tabVendingMachines);
-		GameRegistry.registerItem(this, this.name);
+		GameRegistry.register(this);
     }
 	
 	public String getName() {
@@ -49,9 +64,9 @@ public class ItemVendingMachine extends Item {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void getSubItems(Item item, CreativeTabs tab, List list) {
+	public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems) {
 	    for (int i = 0; i < maxMeta; i ++) {
-	        list.add(new ItemStack(item, 1, i));
+	    	subItems.add(new ItemStack(itemIn, 1, i));
 	    }
 	}
 
@@ -59,8 +74,81 @@ public class ItemVendingMachine extends Item {
 	public String getUnlocalizedName(ItemStack stack) {
 	    return this.getUnlocalizedName() + "_" + stack.getItemDamage();
 	}
-	
-	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
+
+    public EnumActionResult onItemUse(EntityPlayer stack, World playerIn, BlockPos worldIn, EnumHand pos, EnumFacing hand, float facing, float hitX, float hitY) {
+        IBlockState iblockstate = playerIn.getBlockState(worldIn);
+        Block block = iblockstate.getBlock();
+
+        if (!block.isReplaceable(playerIn, worldIn)) {
+            worldIn = worldIn.offset(hand);
+        }
+
+        ItemStack itemstack = stack.getHeldItem(pos);
+
+        if (!itemstack.func_190926_b() && stack.canPlayerEdit(worldIn, hand, itemstack) && playerIn.func_190527_a(this.block, worldIn, false, hand, (Entity)null)) {
+            int i = this.getMetadata(itemstack.getMetadata());
+            IBlockState iblockstate1 = this.block.getStateForPlacement(playerIn, worldIn, hand, facing, hitX, hitY, i, stack, pos);
+
+            if (placeBlockAt(itemstack, stack, playerIn, worldIn, hand, facing, hitX, hitY, iblockstate1)) {
+                SoundType soundtype = playerIn.getBlockState(worldIn).getBlock().getSoundType(playerIn.getBlockState(worldIn), playerIn, worldIn, stack);
+                playerIn.playSound(stack, worldIn, soundtype.getPlaceSound(), SoundCategory.BLOCKS, (soundtype.getVolume() + 1.0F) / 2.0F, soundtype.getPitch() * 0.8F);
+                itemstack.func_190918_g(1);
+            }
+
+            return EnumActionResult.SUCCESS;
+        } else {
+            return EnumActionResult.FAIL;
+        }
+    }
+
+    public boolean placeBlockAt(ItemStack stack, EntityPlayer player, World world, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ, IBlockState newState) {
+        if (!world.setBlockState(pos, newState, 11)) return false;
+
+        IBlockState state = world.getBlockState(pos);
+        if (state.getBlock() == this.block) {
+            setTileEntityNBT(world, player, pos, stack);
+            this.block.onBlockPlacedBy(world, pos, state, player, stack);
+        }
+
+        return true;
+    }
+
+    public static boolean setTileEntityNBT(World worldIn, @Nullable EntityPlayer player, BlockPos pos, ItemStack stackIn) {
+        MinecraftServer minecraftserver = worldIn.getMinecraftServer();
+
+        if (minecraftserver == null) {
+            return false;
+        } else {
+            NBTTagCompound nbttagcompound = stackIn.getSubCompound("BlockEntityTag");
+
+            if (nbttagcompound != null) {
+                TileEntity tileentity = worldIn.getTileEntity(pos);
+
+                if (tileentity != null) {
+                    if (!worldIn.isRemote && tileentity.onlyOpsCanSetNbt() && (player == null || !player.canUseCommandBlock())) {
+                        return false;
+                    }
+
+                    NBTTagCompound nbttagcompound1 = tileentity.writeToNBT(new NBTTagCompound());
+                    NBTTagCompound nbttagcompound2 = nbttagcompound1.copy();
+                    nbttagcompound1.merge(nbttagcompound);
+                    nbttagcompound1.setInteger("x", pos.getX());
+                    nbttagcompound1.setInteger("y", pos.getY());
+                    nbttagcompound1.setInteger("z", pos.getZ());
+
+                    if (!nbttagcompound1.equals(nbttagcompound2)) {
+                        tileentity.readFromNBT(nbttagcompound1);
+                        tileentity.markDirty();
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+    }
+    
+	/*public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         Block block = iblockstate.getBlock();
 
@@ -136,7 +224,7 @@ public class ItemVendingMachine extends Item {
 
             return false;
         }
-    }
+    }/**/
 	
 	/*@Override
     public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_) {

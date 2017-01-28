@@ -29,9 +29,9 @@ public class BlockMachineFiller extends Block {
 	
 	protected BlockMachineFiller(String name) {
 		super(Material.IRON);
-		this.setUnlocalizedName(VendingMachineMod.modID + "_" + name);
-		this.setHardness(1.5F);
-		this.setResistance(10.0F);
+		setUnlocalizedName(VendingMachineMod.modID + "_" + name);
+		setHardness(1.5F);
+		setResistance(10.0F);
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	

@@ -143,7 +143,7 @@ public class VendingMachineRecipes {
 			'B', Blocks.STONE_BUTTON});
 		
 		/* Vending Machines and Parts */
-		for(int i=1; i<13; i++) {
+		/*for(int i=1; i<13; i++) {
 			GameRegistry.addRecipe(new ItemStack(VendingMachineItems.vendingMachine, 1, 0), new Object[] {
 				"AE","BD","AC",
 				'A', Blocks.IRON_BLOCK,
@@ -171,6 +171,6 @@ public class VendingMachineRecipes {
 		GameRegistry.addRecipe(new ItemStack(VendingMachineBlocks.vendingMachineStand, 1, 0), new Object[] {
 			" A ","ABA",
 			'A', Items.IRON_INGOT,
-			'B', Blocks.IRON_BLOCK});
+			'B', Blocks.IRON_BLOCK});/**/
 	}
 }
